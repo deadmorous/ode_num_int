@@ -4,15 +4,9 @@
 /** \defgroup CTMSTD_LANG_LEX General lexical analysis routines
 This module implements several commonly used functions for lexical analysis.
 
-<b> Supported platforms:</b> Linux, Win32.
+<b> Supported platforms:</b> Platform independent.
 
-<b> Module type:</b> dynamic library.
-
-<b> Linkage instructions</b>
-
-Use early binding to link the module to your C++ program.
-    - In Linux builds, pass the \b ctmlex.so shared library to the linker along with your object files.
-    - In Win32 builds, pass the \b ctmlex.lib export library to the linker along with your object files.
+<b> Module type:</b> header file.
 */
 
 /// \ingroup CTMSTD_LANG_LEX
@@ -22,36 +16,45 @@ Use early binding to link the module to your C++ program.
 #ifndef _LEX_IDNUM_H_B8BBDA76_D223_4706_8AD7_5B74AE3D0CD1_
 #define _LEX_IDNUM_H_B8BBDA76_D223_4706_8AD7_5B74AE3D0CD1_
 
+#include <regex>
+
 namespace ctm {
 
 /** \ingroup CTMSTD_LANG*/
 /// \brief \ref CTMSTD_LANG
 namespace lang {
 
-#ifdef _WIN32
-#ifdef CTM_LANG_CTMLEX_EXPORTS
-#define CTM_LANG_CTMLEX_API __declspec(dllexport)
-#else
-#define CTM_LANG_CTMLEX_API __declspec(dllimport)
-#endif
-#else // _WIN32
-#define CTM_LANG_CTMLEX_API
-#endif // _WIN32
-
 /** \addtogroup CTMSTD_LANG_LEX*/
 //@{
 
 /// Returns true if \a str is a C/C++ identifier.
-bool CTM_LANG_CTMLEX_API IsIdentifier( const char *str );
+inline bool IsIdentifier( const char *str ) {
+    return std::regex_match(
+                str,
+                std::regex( "^[a-zA-z_][a-zA-z0-9_]*$" ) );
+    }
 
 /// Returns true if \a str is a real number.
-bool CTM_LANG_CTMLEX_API IsNumber( const char *str );
+inline bool IsNumber( const char *str ) {
+    // http://www.regexlib.com/RETester.aspx?regexp_id=185
+    return std::regex_match(
+                str,
+                std::regex( "^[+-]?([0-9]*\\.?[0-9]+|[0-9]+\\.?[0-9]*)([eE][+-]?[0-9]+)?$" ) );
+    }
 
 /// Returns true if \a str is an integer number.
-bool CTM_LANG_CTMLEX_API IsIntegerNumber( const char *str );
+inline bool IsIntegerNumber( const char *str ) {
+    return std::regex_match(
+                str,
+                std::regex( "^[+-]?[0-9]+$" ) );
+    }
 
 /// Returns true if \a str is a hexadecimal integer number.
-bool CTM_LANG_CTMLEX_API IsHexIntegerNumber( const char *str );
+inline bool IsHexIntegerNumber( const char *str ) {
+    return std::regex_match(
+                str,
+                std::regex( "^[0-9a-fA-F]+$" ) );
+    }
 
 //@}
 

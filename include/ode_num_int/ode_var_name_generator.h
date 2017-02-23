@@ -5,7 +5,6 @@
 
 #include "ode_time_stepper.h"
 #include "ctmstd/cxx_str_fmt_num.h"
-#include "id_name_mapper.h"
 
 #include <algorithm>
 #include <cmath>
@@ -23,18 +22,9 @@ class OdeVarNameGenerator
             {
             }
 
-        std::string varNameById( unsigned int varId ) const {
-            return m_idnm.valName( varId );
-            }
-
         std::string varName( unsigned int varId, unsigned int varIndex ) const
             {
-            try {
-                return m_idnm.valName( varId );
-                }
-            catch( const std::exception& ) {
-                return formatUnnamedVar( varIndex );
-                }
+            return formatUnnamedVar( varIndex );
             }
 
         unsigned int varIdByIndex( unsigned int varIndex ) const
@@ -50,7 +40,6 @@ class OdeVarNameGenerator
     private:
         const OdeRhs<VD>& m_rhs;
         std::vector<unsigned int> m_varIds;
-        IdNameMapper m_idnm;
 
         static int ndigits( unsigned int n ) {
             return 1 + std::max( 0, static_cast<int>( log10(n + 0.5) ) );

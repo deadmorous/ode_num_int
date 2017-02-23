@@ -5,7 +5,6 @@
 
 #include "ode_solver_config.h"
 #include "timer_calibrator.h"
-#include "simout_manager.h"
 #include "ode_var_name_generator.h"
 #include <iostream>
 #include <fstream>
@@ -618,78 +617,6 @@ class OdeSolverStepSolutionColumnwiseOutput :
                         os << "\t" << m_columns[icol].second[ivar];
                     os << std::endl;
                     }
-                }
-            };
-        std::unique_ptr< D > m_d;
-    };
-
-template< class VD >
-class OdeSolverSimDynFileOutput :
-    public OdeSolverOutputOption<VD>,
-    public FactoryMixin< OdeSolverSimDynFileOutput<VD>, OdeSolverOutputOption<VD> >
-    {
-    public:
-        typedef math::VectorTemplate< VD > V;
-        typedef typename V::value_type real_type;
-
-        void beforeFirstStep(
-            const OdeSolverConfiguration<VD> *solverConfig,
-            const OdeSolverComponents<VD> *solverComponents)
-            {
-            m_d = std::unique_ptr<D>( new D( solverConfig, solverComponents ) ); // TODO: use std::make_unique when moving to c++14
-            m_d->writeOutputFrame( m_d->startTime );
-            }
-
-        void afterSolve()
-            {
-            m_d.reset();
-            }
-
-    private:
-        struct D : ObserverCallbackHelper
-            {
-            OdeIntermediateSimoutManager ism;
-            real_type outputTiming;
-            real_type startTime;
-            real_type writeTime;
-            unsigned int nSteps = 0;
-
-            cxx::ScopedIdentifiedElement< typename math::OdeSolverPostObservers<VD>::cb_type > m_cbAfterStep;
-
-            D( const OdeSolverConfiguration<VD> *solverConfig, const OdeSolverComponents<VD> *solverComponents ) :
-                ism( solverConfig->parameterProvider()->simoutCustomBaseName() ),
-                outputTiming( solverConfig->parameterProvider()->odeSolverOutputTiming() ),
-                startTime( solverComponents->solver()->initialTime() ),
-                writeTime( startTime - 2*outputTiming ),
-                m_cbAfterStep( makeCb( solverComponents->solver()->odeSolverPostObservers, &D::afterStep ) )
-                {}
-
-            bool outputNow( real_type currentTime ) const
-                {
-                return outputTiming <= 0   ||
-                    ( currentTime - startTime ) / outputTiming >=
-                    ( writeTime - startTime ) / outputTiming + 1;
-                }
-
-            void afterStep( real_type h,
-                            bool stepAccepted,
-                            bool stepSizeChanged,
-                            bool stepTruncated,
-                            real_type errorNorm,
-                            unsigned int izfTrunc,
-                            int transitionType,
-                            const math::OdeSolver<VD>* s )
-                {
-                using namespace std;
-                auto currentTime = s->initialTime();
-                if( stepAccepted   &&   outputNow( currentTime ) )
-                    writeOutputFrame( currentTime );
-                }
-
-            void writeOutputFrame( real_type currentTime )
-                {
-                IntermediateSimoutManager::maybeWrite();
-                writeTime = currentTime;
                 }
             };
         std::unique_ptr< D > m_d;

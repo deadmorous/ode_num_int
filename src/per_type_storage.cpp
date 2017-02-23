@@ -4,6 +4,6 @@
 
 namespace ctm {
 
-PerTypeStorage::Data *PerTypeStorage::m_data = nullptr;
+ODE_NUMINT_API PerTypeStorage::Data *PerTypeStorage::m_data = nullptr;
 
 } // end namespace ctm

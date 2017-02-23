@@ -1,11 +1,12 @@
 // per_type_storage.h
 
+#ifndef _PER_TYPE_STORAGE_H_
+#define _PER_TYPE_STORAGE_H_
+
 #include <typeinfo>
 #include <string>
 #include <map>
-
-#ifndef _PER_TYPE_STORAGE_H_
-#define _PER_TYPE_STORAGE_H_
+#include "defs.h"
 
 namespace ctm {
 
@@ -40,7 +41,7 @@ class PerTypeStorage
             return *m_data;
             }
 
-        static Data *m_data;
+        static ODE_NUMINT_API Data *m_data;
     };
 
 } // end namespace ctm

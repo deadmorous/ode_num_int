@@ -8,10 +8,8 @@
 #include "ode_rosenbrock_w.h"
 #include "ode_gragg.h"
 #include "ode_extrapolator.h"
-
 #include "ode_implicit_euler.h"
-
-#include "vector_for_ode_solver.h"
+#include "defs.h"
 
 namespace ctm {
 namespace math {

@@ -281,7 +281,9 @@ class OdeSolverConfiguration : public ComponentConfiguration
                         false /*normalized*/);
             }
 
-        const ParameterProvider *parameterProvider() const {
+        const ParameterProvider *parameterProvider() const
+            {
+            ComponentConfiguration::parameterProvider(); // Make sure to create an instance in m_parameterProvider
             return m_parameterProvider.get();
             }
 

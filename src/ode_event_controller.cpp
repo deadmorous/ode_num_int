@@ -1,7 +1,7 @@
 // ode_event_controller.cpp
 
 #include "ode_event_controller.h"
-#include "vector_for_ode_solver.h"
+#include "defs.h"
 
 namespace ctm {
 namespace math {

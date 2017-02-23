@@ -1,7 +1,7 @@
 // algebraic_eqn_solver.cpp
 
 #include "algebraic_eqn_solver.h"
-#include "vector_for_ode_solver.h"
+#include "defs.h"
 
 namespace ctm {
 namespace math {
