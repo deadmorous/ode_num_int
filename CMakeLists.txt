@@ -9,8 +9,5 @@ set (BUILD_SHARED_LIBS true)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-# TODO: Remove
-include_directories(${PROJECT_SOURCE_DIR}/include/ode_num_int)
-
 add_subdirectory(src)
 add_subdirectory(examples)

@@ -11,9 +11,7 @@
 #include <iomanip>
 
 namespace ctm {
-namespace tools {
-namespace cmd {
-namespace numint {
+namespace math {
 
 struct ObserverCallbackHelper
     {
@@ -622,9 +620,7 @@ class OdeSolverStepSolutionColumnwiseOutput :
         std::unique_ptr< D > m_d;
     };
 
-} // end namespace numint
-} // end namespace cmd
-} // end namespace tools
+} // end namespace math
 } // end namespace ctm
 
 #endif // _ODE_SOLVER_OUTPUT_H_

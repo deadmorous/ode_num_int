@@ -7,9 +7,7 @@
 #include "component_config.h"
 
 namespace ctm {
-namespace tools {
-namespace cmd {
-namespace numint {
+namespace math {
 
 template< class VD >
 class OdeSolverComponents
@@ -354,9 +352,7 @@ inline void solveOde(
     finalizeOdeOutput( outputOptions );
     }
 
-} // end namespace numint
-} // end namespace cmd
-} // end namespace tools
+} // end namespace math
 } // end namespace ctm
 
 #endif // _ODE_SOLVER_CONFIG_H_

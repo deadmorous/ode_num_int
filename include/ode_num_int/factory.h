@@ -106,9 +106,36 @@ class FactoryMixin : public TypeIdGetter< Interface >
             }
     };
 
+template< class Implementation > struct ImplementationTypeTraits {
+        static FactoryBase::TypeId typeId();
+    };
+
+template< class Implementation >
+class ImplementationRegistrator : public Implementation::Registrator {
+    public: ImplementationRegistrator() : Implementation::Registrator( ImplementationTypeTraits<Implementation>::typeId() ) {}
+    };
+
 } // end namespace ctm
 
 #define CTM_FACTORY_REGISTER_TYPE( Class, typeId ) \
     static Class::Registrator Class##Registrator( typeId );
+
+#define CTM_DECL_IMPLEMENTATION_TRAITS( Implementation, typeName ) \
+template<> \
+struct ImplementationTypeTraits< Implementation > { \
+        static FactoryBase::TypeId typeId() { return typeName; } \
+    };
+
+#define CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( Implementation, typeName ) \
+template<> template< class ... args > \
+struct ImplementationTypeTraits< Implementation<args...> > { \
+        static FactoryBase::TypeId typeId() { return typeName; } \
+    };
+
+#define CTM_DECL_IMPLEMENTATION_REGISTRATOR( Implementation ) \
+    ImplementationRegistrator< Implementation > Implementation##Registrator;
+
+#define CTM_DECL_IMPLEMENTATION_TEMPLATE_REGISTRATOR( Implementation, ... ) \
+    ImplementationRegistrator< Implementation<__VA_ARGS__> > Implementation##Registrator;
 
 #endif // _FACTORY_H_
