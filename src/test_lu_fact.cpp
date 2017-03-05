@@ -1,7 +1,7 @@
 // test_lu_fact.cpp
 
 #include "sparse_util.h"
-#include "lu_fact.h"
+#include "lu/LUFactorizer.h"
 #include <cstdlib>
 #include <map>
 #include <vector>

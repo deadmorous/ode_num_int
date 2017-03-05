@@ -1,110 +1,12 @@
-// lu_fact.h
+// LUFactorizer.h
 
-#ifndef _LU_FACT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _LU_FACT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _LU_LUFACTORIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _LU_LUFACTORIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include <vector>
-#include <utility>
-#include <algorithm>
-#include "ctmstd/cxx_exception.h"
-#include "ctmstd/cxx_assert.h"
+#include "TimingStats.h"
 #include "ctmstd/cxx_zeroinit.h"
 
-#define CTM_MATH_LU_ENABLE_TIMING
-
 // #define CTM_MATH_LU_USE_MX_FAST_CACHE
-
-#ifdef CTM_MATH_LU_ENABLE_TIMING
-#include "timing_util_opaque.h"
-
-namespace ctm {
-namespace sys {
-
-class TimingStats
-    {
-    public:
-        TimingStats() : m_time(0), m_count(0) {}
-        TimingStats& operator+=( const TimingStats& that ) {
-            m_count += that.m_count;
-            m_time += that.m_time;
-            return *this;
-            }
-        TimingStats operator+( const TimingStats& that ) const {
-            TimingStats result = *this;
-            result += that;
-            return result;
-            }
-
-        OpaqueTickType time() const {
-            return m_time;
-            }
-        unsigned int count() const {
-            return m_count;
-            }
-        OpaqueTickType averageTime() const {
-            return m_count > 0? m_time/m_count: 0;
-            }
-        void add( OpaqueTickType t ) {
-            m_time += t;
-            ++m_count;
-            }
-
-    private:
-        OpaqueTickType m_time;
-        unsigned int m_count;
-    };
-
-class ScopedTimeMeasurer
-    {
-    public:
-        explicit ScopedTimeMeasurer( TimingStats& st ) :
-            m_st( st ),
-            m_timer( true )
-            {}
-
-        ~ScopedTimeMeasurer() {
-            m_st.add( m_timer.Stop() );
-            }
-
-    private:
-        TimingStats& m_st;
-        OpaqueTickCounter m_timer;
-    };
-
-} // end namespace sys
-} // end namespace ctm
-
-#else // CTM_MATH_LU_ENABLE_TIMING
-
-namespace ctm {
-namespace sys {
-
-class TimingStats
-    {
-    public:
-        unsigned int time() const { return 0; }
-        unsigned int count() const { return 0; }
-        unsigned int averageTime() const { return 0; }
-        void add( unsigned int ) {}
-
-        TimingStats& operator+=( const TimingStats& that ) {
-            return *this;
-            }
-        TimingStats operator+( const TimingStats& that ) const {
-            return TimingStats();
-            }
-    };
-
-class ScopedTimeMeasurer
-    {
-    public:
-        explicit ScopedTimeMeasurer( TimingStats& ) {}
-    };
-
-} // end namespace sys
-} // end namespace ctm
-
-#endif // CTM_MATH_LU_ENABLE_TIMING
 
 namespace ctm {
 namespace math {
@@ -423,27 +325,7 @@ class LUFactorizer
                 }
             }
 
-        struct TimingStats
-            {
-            sys::TimingStats factorizeTiming;
-            sys::TimingStats solveTiming;
-            sys::TimingStats setMatrixTiming;
-            sys::TimingStats setMatrixFastTiming;
-            sys::TimingStats updateTiming;
-            TimingStats& operator+=( const TimingStats& that ) {
-                factorizeTiming += that.factorizeTiming;
-                solveTiming += that.solveTiming;
-                setMatrixTiming += that.setMatrixTiming;
-                setMatrixFastTiming += that.setMatrixFastTiming;
-                updateTiming += that.updateTiming;
-                return *this;
-                }
-            TimingStats& operator+( const TimingStats& that ) const {
-                TimingStats result = *this;
-                result += that;
-                return result;
-                }
-            };
+        typedef LUFactorizerTimingStats TimingStats;
 
         TimingStats timingStats() const { return m_timingStats; }
         void clearTimingStats() {
@@ -559,4 +441,4 @@ class LUFactorizer
 } // end namespace math
 } // end namespace ctm
 
-#endif // _LU_FACT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _LU_LUFACTORIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

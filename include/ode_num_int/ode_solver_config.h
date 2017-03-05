@@ -6,6 +6,8 @@
 #include "ode_solver.h"
 #include "component_config.h"
 
+#include "alg_solver/MappingNormalizer.h"
+
 namespace ctm {
 namespace math {
 

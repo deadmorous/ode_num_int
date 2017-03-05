@@ -5,7 +5,7 @@
 
 #include "ode_time_stepper.h"
 #include "ctmstd/m_tolerance.h"
-#include "lu_util.h"
+#include "lu/util.h"
 #include "algebraic_eqn_solver.h" // JacobianTrimmer, TODO better
 #include <algorithm>
 #include <list>

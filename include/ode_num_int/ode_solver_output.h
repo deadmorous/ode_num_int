@@ -344,7 +344,7 @@ class OdeSolverStepGeneralConsoleOutput :
                 }
 
             bool afterIteration( unsigned int iterationNumber,
-                                 const math::NewtonSolver<VD>* solver )
+                                 const math::NewtonSolverInterface<VD>* solver )
                 {
                 using namespace std;
 

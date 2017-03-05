@@ -3,6 +3,7 @@
 #include "algebraic_eqn_solver.h"
 #include "ode_time_stepper.h"
 #include "ode_test_models.h"
+#include "alg_solver/JacobianHartUpdateNewtonDescentDirection.h"
 
 #include <iostream>
 
@@ -19,7 +20,7 @@ void testOdeTimeStepper()
     typedef VectorTemplate< MyVD > MyVec;
     typedef CoupledNonlinearOscillators< MyVD > MyOdeRhs;
 
-    auto cb = []( unsigned int iterationNumber, const NewtonSolver<MyVD>* solver ) -> bool
+    auto cb = []( unsigned int iterationNumber, const NewtonSolverInterface<MyVD>* solver ) -> bool
         {
         auto itperf = solver->iterationPerformer();
         auto alpha = itperf->currentStepRatio();

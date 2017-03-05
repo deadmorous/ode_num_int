@@ -1,6 +1,8 @@
 // test_algebraic_eqn_solver.cpp
 
 #include "algebraic_eqn_solver.h"
+#include "alg_solver/MappingNormalizer.h"
+#include "alg_solver/SimpleNewtonDescentDirection.h"
 
 #include <iostream>
 
@@ -118,7 +120,7 @@ class CoupledNonlinearOscillators : public VectorMapping< MyVD >
 void testAlgebraicEqnSolver()
     {
     // Specify callbacks
-    auto cb = []( unsigned int iterationNumber, const NewtonSolver<MyVD>* solver ) -> bool
+    auto cb = []( unsigned int iterationNumber, const NewtonSolverInterface<MyVD>* solver ) -> bool
         {
         auto itperf = solver->iterationPerformer();
         auto alpha = itperf->currentStepRatio();

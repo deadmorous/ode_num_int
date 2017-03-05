@@ -4,6 +4,20 @@
 #define _REG_ALGEBRAIC_EQN_SOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "algebraic_eqn_solver.h"
+#include "alg_solver/DefaultJacobianProvider.h"
+#include "alg_solver/SparseJacobianProvider.h"
+#include "alg_solver/SimpleErrorEstimator.h"
+#include "alg_solver/SimpleNewtonDescentDirection.h"
+#include "alg_solver/JacobianWidthBasedTrimmer.h"
+#include "alg_solver/JacobianThresholdBasedTrimmer.h"
+#include "alg_solver/JacobianBroydenUpdateNewtonDescentDirection.h"
+#include "alg_solver/JacobianFakeBroydenUpdateNewtonDescentDirection.h"
+#include "alg_solver/JacobianLazyFakeBroydenUpdateNewtonDescentDirection.h"
+#include "alg_solver/JacobianHartUpdateNewtonDescentDirection.h"
+#include "alg_solver/ConstJacobianNewtonDescentDirection.h"
+#include "alg_solver/SimpleNewtonLinearSearch.h"
+#include "alg_solver/NewtonIterationPerformerImpl.h"
+#include "alg_solver/NewtonSolver.h"
 
 namespace ctm {
 
