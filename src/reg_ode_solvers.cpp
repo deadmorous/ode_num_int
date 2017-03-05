@@ -1,6 +1,8 @@
 // reg_ode_solvers.cpp
 
-#include "ode_extrapolator.h"
+#include "ode_solver/ExtrapolatorStepSequenceRomberg.h"
+#include "ode_solver/ExtrapolatorStepSequenceBulirsch.h"
+#include "ode_solver/ExtrapolatorStepSequenceHarmonic.h"
 
 namespace ctm {
 namespace math {

@@ -1,9 +1,9 @@
 // test_ode_time_stepper.cpp
 
 #include "algebraic_eqn_solver.h"
-#include "ode_time_stepper.h"
 #include "ode_test_models.h"
 #include "alg_solver/JacobianHartUpdateNewtonDescentDirection.h"
+#include "ode_solver/OdeStepMappingEuler.h"
 
 #include <iostream>
 
@@ -14,7 +14,7 @@ using namespace testmodels;
 
 namespace {
 
-void testOdeTimeStepper()
+void testOdeStepMapping()
     {
     typedef VectorData<double> MyVD;
     typedef VectorTemplate< MyVD > MyVec;
@@ -34,7 +34,7 @@ void testOdeTimeStepper()
         };
 
     auto odeRhs = make_shared< MyOdeRhs >( 10, 1e3, 3e4, 100 );
-    auto eqnRhs = make_shared< OdeTimeStepperEuler<MyVD> >();
+    auto eqnRhs = make_shared< OdeStepMappingEuler<MyVD> >();
     eqnRhs->setOdeRhs( odeRhs );
     eqnRhs->setImplicitnessParameter( 1 );
     eqnRhs->setInitialState( 0, MyVec( odeRhs->varCount() ) );
@@ -66,6 +66,6 @@ void testOdeTimeStepper()
     }
 
 // Uncomment to call the test at startup
-// struct _{_() { testOdeTimeStepper(); } }__;
+// struct _{_() { testOdeStepMapping(); } }__;
 
 } // anonymous namespace

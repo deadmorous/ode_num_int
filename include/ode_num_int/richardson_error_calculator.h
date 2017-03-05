@@ -3,7 +3,10 @@
 #ifndef _RICHARDSON_ERROR_CALCULATOR_H_
 #define _RICHARDSON_ERROR_CALCULATOR_H_
 
-#include "ode_solver.h"
+#include "ode_solver/ErrorNormCalculator.h"
+#include "ode_solver/OdeStepSizeController.h"
+#include "ode_solver/OdeEventController.h"
+#include "ode_solver/OdeSolver.h"
 #include "error_stats.h"
 
 namespace ctm {

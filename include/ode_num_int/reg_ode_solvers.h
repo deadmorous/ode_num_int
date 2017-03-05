@@ -3,15 +3,16 @@
 #ifndef _REG_ODE_SOLVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _REG_ODE_SOLVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ode_explicit_euler.h"
-#include "ode_rk4.h"
-#include "ode_dopri_45.h"
-#include "ode_dopri_56.h"
-#include "ode_dopri_78.h"
-#include "ode_rosenbrock_w.h"
-#include "ode_gragg.h"
-#include "ode_extrapolator.h"
-#include "ode_implicit_euler.h"
+#include "ode_solver/OdeSolverExplicitEuler.h"
+#include "ode_solver/OdeSolverRK4.h"
+#include "ode_solver/OdeSolverDOPRI45.h"
+#include "ode_solver/OdeSolverDOPRI56.h"
+#include "ode_solver/OdeSolverDOPRI78.h"
+#include "ode_solver/OdeSolverRosenbrock_W1.h"
+#include "ode_solver/OdeSolverRosenbrock_SW2_4.h"
+#include "ode_solver/OdeSolverGragg.h"
+#include "ode_solver/OdeSolverExtrapolator.h"
+#include "ode_solver/OdeSolverImplicitEuler.h"
 
 namespace ctm {
 
@@ -24,11 +25,6 @@ CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( math::OdeSolverRosenbrock_W1, "rosenbro
 CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( math::OdeSolverRosenbrock_SW2_4, "rosenbrock_sw2_4" )
 CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( math::OdeSolverGragg, "gragg" )
 CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( math::OdeSolverExtrapolator, "extrapolator" )
-
-CTM_DECL_IMPLEMENTATION_TRAITS( math::ExtrapolatorStepSequenceRomberg, "romberg" )
-CTM_DECL_IMPLEMENTATION_TRAITS( math::ExtrapolatorStepSequenceBulirsch, "bulirsch" )
-CTM_DECL_IMPLEMENTATION_TRAITS( math::ExtrapolatorStepSequenceHarmonic, "harmonic" )
-
 CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( math::OdeSolverImplicitEuler, "i_euler" )
 
 namespace math {

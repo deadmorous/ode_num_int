@@ -21,7 +21,7 @@ class OdeNumIntClassesRegistrator
         OdeEventControllerClassesRegistrator<VD> m_odeEventControllerClassesRegistrator;
         OdeSolverCommonClassesRegistrator<VD> m_odeSolverCommonClassesRegistrator;
         OdeSolverClassesRegistrator<VD> m_odeSolverClassesRegistrator;
-        OdeTimeStepperClassesRegistrator<VD> m_odeTimeStepperClassesRegistrator;
+        OdeStepMappingClassesRegistrator<VD> m_odeStepMappingClassesRegistrator;
         OdeSolverOutputClassesRegistrator<VD> m_odeSolverOutputClassesRegistrator;
     };
 

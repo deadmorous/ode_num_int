@@ -3,7 +3,7 @@
 #ifndef _REG_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _REG_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ode_solver_output.h"
+#include "ode_solver/ode_solver_output.h"
 
 namespace ctm {
 

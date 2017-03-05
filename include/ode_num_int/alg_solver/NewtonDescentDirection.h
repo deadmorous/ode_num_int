@@ -4,7 +4,7 @@
 #define _ALGSOLVER_NEWTONDESCENTDIRECTION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "JacobianProvider.h"
-#include "lu/TimingStats.h"
+#include "lu/LUFactorizerTimingStats.h"
 #include "sparse_util.h"
 
 namespace ctm {

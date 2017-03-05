@@ -3,7 +3,7 @@
 #ifndef _ALGSOLVER_JACOBIANTRIMMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ALGSOLVER_JACOBIANTRIMMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "vector_mapping.h"
+#include "../VectorMapping.h"
 #include "sparse_util.h"
 
 namespace ctm {

@@ -3,7 +3,7 @@
 #ifndef _REG_REG_ODE_EVENT_CONTROLLER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _REG_REG_ODE_EVENT_CONTROLLER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ode_event_controller.h"
+#include "ode_solver/LinearOdeEventController.h"
 
 namespace ctm {
 

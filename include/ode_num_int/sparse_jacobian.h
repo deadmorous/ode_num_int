@@ -4,7 +4,7 @@
 #define _SPARSE_JACOBIAN_H_
 
 #include "sparse_util.h"
-#include "vector_mapping.h"
+#include "VectorMapping.h"
 #include <set>
 #include <algorithm>
 

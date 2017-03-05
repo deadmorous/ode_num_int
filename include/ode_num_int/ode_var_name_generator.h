@@ -3,7 +3,7 @@
 #ifndef _ODE_VAR_NAME_GENERATOR_H_
 #define _ODE_VAR_NAME_GENERATOR_H_
 
-#include "ode_time_stepper.h"
+#include "ode_solver/OdeRhs.h"
 #include "ctmstd/cxx_str_fmt_num.h"
 
 #include <algorithm>

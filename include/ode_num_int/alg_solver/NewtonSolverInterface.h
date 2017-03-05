@@ -5,18 +5,10 @@
 
 #include "NewtonIterationPerformer.h"
 #include "NewtonRegularizationStrategy.h"
+#include "NewtonSolverIterationObservers.h"
 
 namespace ctm {
 namespace math {
-
-template< class VD > class NewtonSolverInterface;
-
-template< class VD >
-using NewtonSolverIterationObservers = cxx::TerminatingObservers<
-        unsigned int /*iterationNumber*/,
-        const NewtonSolverInterface<VD>* /*solver*/>;
-
-
 
 template< class VD >
 class NewtonSolverInterface :
