@@ -1,8 +1,6 @@
 #include "ode_num_int/ode_solver_config.h"
 #include "ode_num_int/ode_rk4.h"
-
-#include "ode_num_int/reg_all.h"
-#include "ode_num_int/reg_ode_test_models.h"
+#include "reg.h"
 
 #include <iostream>
 
@@ -12,12 +10,10 @@ int main()
     using namespace ctm;
     using namespace math;
 
+    registerTypes();
 
     typedef VectorData<double> VD;
     typedef VectorTemplate<VD> V;
-
-    OdeNumIntClassesRegistrator<VD> registrator;
-    testmodels::OdeTestModelClassesRegistrator<VD> modelRegistrator;
 
     try {
         OdeSolverConfiguration<VD> cfg;
