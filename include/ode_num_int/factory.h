@@ -126,11 +126,19 @@ struct ImplementationTypeTraits< Implementation > { \
         static FactoryBase::TypeId typeId() { return typeName; } \
     };
 
+#ifdef _MSC_VER
+// Note: General implementation (below this one) causes C2910 in MSVS 2013
 #define CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( Implementation, typeName ) \
+template< class ... args > \
+struct ImplementationTypeTraits< Implementation<args...> > { \
+        static FactoryBase::TypeId typeId() { return typeName; } \
+    };
+#else // _MSC_VER
 template<> template< class ... args > \
 struct ImplementationTypeTraits< Implementation<args...> > { \
         static FactoryBase::TypeId typeId() { return typeName; } \
     };
+#endif // _MSC_VER
 
 #define CTM_DECL_IMPLEMENTATION_REGISTRATOR( Implementation ) \
     ImplementationRegistrator< Implementation > Implementation##Registrator;

@@ -9,7 +9,7 @@
 namespace ctm {
 namespace sys {
 
-class TimerCalibrator
+class ODE_NUMINT_API TimerCalibrator
     {
     public:
         TimerCalibrator();

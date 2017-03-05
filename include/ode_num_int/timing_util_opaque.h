@@ -3,6 +3,8 @@
 #ifndef _TIMING_UTIL_OPAQUE_H_
 #define _TIMING_UTIL_OPAQUE_H_
 
+#include "defs.h"
+
 #ifdef _WIN32
 typedef unsigned __int64 OpaqueTickType;
 #endif // _WIN32
@@ -11,7 +13,7 @@ typedef unsigned __int64 OpaqueTickType;
 typedef unsigned long long OpaqueTickType;
 #endif // __linux__
 
-class OpaqueTickCounter
+class ODE_NUMINT_API OpaqueTickCounter
     {
     private:
         OpaqueTickType tStart;
