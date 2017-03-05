@@ -6,7 +6,7 @@
 #include "OdeNewtonSolver.h"
 #include "OdeEventController.h"
 #include "OdeStepMappingEuler.h"
-#include "../VectorReorderingMapping.h"
+#include "../alg_solver/VectorReorderingMapping.h"
 
 namespace ctm {
 namespace math {

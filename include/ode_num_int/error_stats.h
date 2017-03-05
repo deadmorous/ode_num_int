@@ -3,7 +3,7 @@
 #ifndef _ERROR_STATS_H_
 #define _ERROR_STATS_H_
 
-#include "vector_util.h"
+#include "la/vector_util.h"
 
 namespace ctm {
 namespace math {

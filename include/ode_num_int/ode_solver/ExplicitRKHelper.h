@@ -3,7 +3,7 @@
 #ifndef _ODESOLVER_EXPLICITRKHELPER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ODESOLVER_EXPLICITRKHELPER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "../vector_util.h"
+#include "../la/vector_util.h"
 
 namespace ctm {
 namespace math {

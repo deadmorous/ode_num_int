@@ -1,7 +1,6 @@
 // test_sparse_util.cpp
 
-#include "sparse_util.h"
-#include "vector_util.h"
+#include "la/sparse_util.h"
 
 #include <iostream>
 

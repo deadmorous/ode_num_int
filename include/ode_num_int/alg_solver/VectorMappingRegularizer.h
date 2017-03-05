@@ -3,7 +3,7 @@
 #ifndef _ALGSOLVER_VECTORMAPPINGREGULARIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ALGSOLVER_VECTORMAPPINGREGULARIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "opt_param.h"
+#include "../infra/OptionalParameters.h"
 #include "ctmstd/def_prop_class.h"
 
 namespace ctm {

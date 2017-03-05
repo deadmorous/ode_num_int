@@ -5,10 +5,11 @@
 
 #include "OdeSolver.h"
 #include "OdeInitState.h"
-#include "../ComponentConfiguration.h"
+#include "../infra/ComponentConfiguration.h"
 #include "../alg_solver/MappingNormalizer.h"
-#include "../VectorNarrowingMapping.h"
-#include "../VectorReorderingMapping.h"
+#include "../alg_solver/VectorNarrowingMapping.h"
+#include "../alg_solver/VectorReorderingMapping.h"
+#include <set>
 
 namespace ctm {
 namespace math {

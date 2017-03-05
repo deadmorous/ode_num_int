@@ -1,7 +1,7 @@
-// opt_param.h
+// OptionalParameters.h
 
-#ifndef _OPT_PARAM_H_
-#define _OPT_PARAM_H_
+#ifndef _INFRA_OPTIONALPARAMETERS_H_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_OPTIONALPARAMETERS_H_CF3E_424f_9766_BA04D388199F_
 
 #include <string>
 #include <map>
@@ -13,7 +13,7 @@
 #include "ctmlex/lex_idnum.h"
 #include "ctmstd/cxx_exception.h"
 #include "ctmstd/cxx_str_fmt_num.h"
-#include "factory.h"
+#include "Factory.h"
 
 namespace ctm {
 
@@ -319,4 +319,4 @@ inline std::ostream& operator<<( std::ostream& s, const OptionalParameters::Valu
 
 } // end namespace ctm
 
-#endif // _OPT_PARAM_H_
+#endif // _INFRA_OPTIONALPARAMETERS_H_CF3E_424f_9766_BA04D388199F_

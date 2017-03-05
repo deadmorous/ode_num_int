@@ -1,9 +1,9 @@
-// sparse_jacobian.h
+// SparseJacobianCalculator.h
 
-#ifndef _SPARSE_JACOBIAN_H_
-#define _SPARSE_JACOBIAN_H_
+#ifndef _ALGSOLVER_SPARSEJACOBIANCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ALGSOLVER_SPARSEJACOBIANCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "sparse_util.h"
+#include "../la/sparse_util.h"
 #include "VectorMapping.h"
 #include <set>
 #include <algorithm>
@@ -140,4 +140,4 @@ inline void computeSparseJacobian(
 } // end namespace math
 } // end namespace ctm
 
-#endif // _SPARSE_JACOBIAN_H_
+#endif // _ALGSOLVER_SPARSEJACOBIANCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

@@ -1,7 +1,7 @@
-// factory.h
+// Factory.h
 
-#ifndef _FACTORY_H_
-#define _FACTORY_H_
+#ifndef _INFRA_FACTORY_H_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_FACTORY_H_CF3E_424f_9766_BA04D388199F_
 
 #include <string>
 #include <memory>
@@ -12,7 +12,7 @@
 
 #include "ctmstd/cxx_assert.h"
 #include "ctmstd/cxx_exception.h"
-#include "per_type_storage.h"
+#include "PerTypeStorage.h"
 
 namespace ctm {
 
@@ -146,4 +146,4 @@ struct ImplementationTypeTraits< Implementation<args...> > { \
 #define CTM_DECL_IMPLEMENTATION_TEMPLATE_REGISTRATOR( Implementation, ... ) \
     ImplementationRegistrator< Implementation<__VA_ARGS__> > Implementation##Registrator;
 
-#endif // _FACTORY_H_
+#endif // _INFRA_FACTORY_H_CF3E_424f_9766_BA04D388199F_

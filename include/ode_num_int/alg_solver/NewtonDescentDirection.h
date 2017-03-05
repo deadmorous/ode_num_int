@@ -5,7 +5,7 @@
 
 #include "JacobianProvider.h"
 #include "lu/LUFactorizerTimingStats.h"
-#include "sparse_util.h"
+#include "la/sparse_util.h"
 
 namespace ctm {
 namespace math {

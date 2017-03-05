@@ -3,7 +3,7 @@
 #ifndef _ODESOLVER_ODESTEPMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ODESOLVER_ODESTEPMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "../VectorMapping.h"
+#include "../alg_solver/VectorMapping.h"
 #include "OdeRhs.h"
 
 namespace ctm {

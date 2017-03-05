@@ -3,8 +3,7 @@
 #ifndef _COMPONENTCONFIGURATION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _COMPONENTCONFIGURATION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "opt_param.h"
-#include <set>
+#include "OptionalParameters.h"
 
 namespace ctm {
 

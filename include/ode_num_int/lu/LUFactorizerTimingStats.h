@@ -3,7 +3,7 @@
 #ifndef _LU_LUFACTORIZERTIMINGSTATS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _LU_LUFACTORIZERTIMINGSTATS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "../TimingStats.h"
+#include "../timing/TimingStats.h"
 
 namespace ctm {
 namespace math {

@@ -4,7 +4,7 @@
 #define _ODESOLVER_ODESOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "OdeRhs.h"
-#include "../TimingStats.h"
+#include "../timing/TimingStats.h"
 #include "../alg_solver/NewtonSolverIterationObservers.h"
 #include "../lu/LUFactorizerTimingStats.h"
 

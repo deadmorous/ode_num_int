@@ -1,9 +1,9 @@
-// timer_calibrator.h
+// TimerCalibrator.h
 
-#ifndef _TIMER_CALIBRATOR_H_
-#define _TIMER_CALIBRATOR_H_
+#ifndef _TIMING_TIMERCALIBRATOR_H_CF3E_424f_9766_BA04D388199F_
+#define _TIMING_TIMERCALIBRATOR_H_CF3E_424f_9766_BA04D388199F_
 
-#include "timing_util_opaque.h"
+#include "OpaqueTickCounter.h"
 #include <string>
 
 namespace ctm {
@@ -29,4 +29,4 @@ class ODE_NUMINT_API TimerCalibrator
 } // end namespace sys
 } // end namespace ctm
 
-#endif // _TIMER_CALIBRATOR_H_
+#endif // _TIMING_TIMERCALIBRATOR_H_CF3E_424f_9766_BA04D388199F_

@@ -1,6 +1,6 @@
-// per_type_storage.cpp
+// PerTypeStorage.cpp
 
-#include "per_type_storage.h"
+#include "infra/PerTypeStorage.h"
 
 namespace ctm {
 

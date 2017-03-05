@@ -1,12 +1,12 @@
 // per_type_storage.h
 
-#ifndef _PER_TYPE_STORAGE_H_
-#define _PER_TYPE_STORAGE_H_
+#ifndef _INFRA_PERTYPESTORAGE_H_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_PERTYPESTORAGE_H_CF3E_424f_9766_BA04D388199F_
 
 #include <typeinfo>
 #include <string>
 #include <map>
-#include "defs.h"
+#include "../defs.h"
 
 namespace ctm {
 
@@ -46,4 +46,4 @@ class PerTypeStorage
 
 } // end namespace ctm
 
-#endif // _PER_TYPE_STORAGE_H_
+#endif // _INFRA_PERTYPESTORAGE_H_CF3E_424f_9766_BA04D388199F_

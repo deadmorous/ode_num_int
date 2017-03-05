@@ -1,6 +1,6 @@
 // timer_calibrator.cpp
 
-#include "timer_calibrator.h"
+#include "timing/TimerCalibrator.h"
 #include "ctmstd/cxx_assert.h"
 #include "ctmstd/sys_time.h"
 #include "ctmstd/cxx_exception.h"

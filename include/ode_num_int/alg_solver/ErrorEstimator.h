@@ -3,8 +3,8 @@
 #ifndef _ALGSOLVER_ERRORESTIMATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ALGSOLVER_ERRORESTIMATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "def_prop_vd_template_class.h"
-#include "opt_param.h"
+#include "../infra/def_prop_vd_template_class.h"
+#include "../infra/OptionalParameters.h"
 
 namespace ctm {
 namespace math {

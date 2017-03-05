@@ -1,6 +1,6 @@
 // test_vector_mapping.cpp
 
-#include "VectorNarrowingMapping.h"
+#include "alg_solver/VectorNarrowingMapping.h"
 #include <iostream>
 
 using namespace std;

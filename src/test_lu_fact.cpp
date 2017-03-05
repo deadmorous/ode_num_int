@@ -1,6 +1,6 @@
 // test_lu_fact.cpp
 
-#include "sparse_util.h"
+#include "la/sparse_util.h"
 #include "lu/LUFactorizer.h"
 #include <cstdlib>
 #include <map>

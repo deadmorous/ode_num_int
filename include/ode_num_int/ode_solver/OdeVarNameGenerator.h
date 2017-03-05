@@ -1,7 +1,7 @@
-// ode_var_name_generator.h
+// OdeVarNameGenerator.h
 
-#ifndef _ODE_VAR_NAME_GENERATOR_H_
-#define _ODE_VAR_NAME_GENERATOR_H_
+#ifndef _ODESOLVER_ODEVARNAMEGENERATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODESOLVER_ODEVARNAMEGENERATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "ode_solver/OdeRhs.h"
 #include "ctmstd/cxx_str_fmt_num.h"
@@ -55,4 +55,4 @@ class OdeVarNameGenerator
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODE_VAR_NAME_GENERATOR_H_
+#endif // _ODESOLVER_ODEVARNAMEGENERATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
