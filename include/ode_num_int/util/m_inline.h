@@ -16,7 +16,7 @@ Defines several frequently used mathematic functions.
 #ifndef _M_INLINE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
 #define _M_INLINE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
 
-#include "cxx_assert.h"
+#include "../infra/cxx_assert.h"
 #include <math.h>
 
 namespace ctm {

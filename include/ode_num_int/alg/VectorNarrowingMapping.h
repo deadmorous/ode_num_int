@@ -4,7 +4,7 @@
 #define _ALGSOLVER_VECTORNARROWINGMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/VectorMapping.h"
-#include "ctmstd/cxx_exception.h"
+#include "../infra/cxx_exception.h"
 
 namespace ctm {
 namespace math {

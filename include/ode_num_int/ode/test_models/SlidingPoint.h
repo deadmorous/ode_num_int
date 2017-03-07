@@ -4,7 +4,7 @@
 #define _ODE_MODEL_SLIDING_POINT_H_
 
 #include "../interfaces/OdeRhs.h"
-#include "ctmstd/m_const.h"
+#include "../../util/m_const.h"
 
 namespace ctm {
 namespace testmodels {

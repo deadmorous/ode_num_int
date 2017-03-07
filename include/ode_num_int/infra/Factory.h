@@ -10,9 +10,9 @@
 #include <functional>
 #include <algorithm>
 
-#include "ctmstd/cxx_assert.h"
-#include "ctmstd/cxx_exception.h"
-#include "PerTypeStorage.h"
+#include "./cxx_assert.h"
+#include "./cxx_exception.h"
+#include "./PerTypeStorage.h"
 
 namespace ctm {
 

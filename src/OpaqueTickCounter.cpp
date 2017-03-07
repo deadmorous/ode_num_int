@@ -9,7 +9,7 @@
 #endif // __linux__
 
 #include "timing/OpaqueTickCounter.h"
-#include "ctmstd/cxx_assert.h"
+#include "infra/cxx_assert.h"
 
 void OpaqueTickCounter::Start()
     {

@@ -4,7 +4,7 @@
 #define _ODESOLVER_ODESTEPSIZESIMPLECONTROLLER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/OdeStepSizeController.h"
-#include "ctmstd/m_tolerance.h"
+#include "../util/m_tolerance.h"
 
 namespace ctm {
 namespace math {

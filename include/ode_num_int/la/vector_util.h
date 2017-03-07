@@ -8,9 +8,9 @@
 #include <cmath>
 #include <sstream>
 
-#include "ctmstd/cxx_assert.h"
-#include "ctmstd/cxx_mock_ptr.h"
-#include "ctmstd/m_inline.h"
+#include "../infra/cxx_assert.h"
+#include "../infra/cxx_mock_ptr.h"
+#include "../util/m_inline.h"
 
 namespace ctm {
 namespace math {

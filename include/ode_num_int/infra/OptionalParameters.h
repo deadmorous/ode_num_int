@@ -10,10 +10,10 @@
 #include <tuple>
 #include <type_traits>
 
-#include "ctmlex/lex_idnum.h"
-#include "ctmstd/cxx_exception.h"
-#include "ctmstd/cxx_str_fmt_num.h"
-#include "Factory.h"
+#include "./cxx_exception.h"
+#include "./Factory.h"
+#include "../util/lex_idnum.h"
+#include "../util/cxx_str_fmt_num.h"
 
 namespace ctm {
 

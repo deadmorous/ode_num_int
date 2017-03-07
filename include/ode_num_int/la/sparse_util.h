@@ -11,9 +11,9 @@
 #include <string>
 #include <sstream>
 
-#include "ctmstd/cxx_assert.h"
-#include "ctmstd/cxx_mock_ptr.h"
-#include "ctmstd/cxx_exception.h"
+#include "../infra/cxx_assert.h"
+#include "../infra/cxx_mock_ptr.h"
+#include "../infra/cxx_exception.h"
 #include "vector_util.h"
 
 namespace ctm {
