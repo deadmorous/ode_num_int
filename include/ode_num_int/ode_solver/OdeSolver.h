@@ -49,7 +49,7 @@ class OdeSolver :
         OdeSolverPostObservers<VD> odeSolverPostObservers;
         JacobianRefreshObservers jacobianRefreshObservers;
         NewtonSolverIterationObservers<VD> iterationObservers;
-        typename LUFactorizerTimingStats luTimingStats;
+        LUFactorizerTimingStats luTimingStats;
 
         // deBUG, TODO: Remove
         sys::TimingStats tstat0;

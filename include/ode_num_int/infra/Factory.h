@@ -134,6 +134,7 @@ struct ImplementationTypeTraits< Implementation<args...> > { \
         static FactoryBase::TypeId typeId() { return typeName; } \
     };
 #else // _MSC_VER
+#define CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( Implementation, typeName ) \
 template<> template< class ... args > \
 struct ImplementationTypeTraits< Implementation<args...> > { \
         static FactoryBase::TypeId typeId() { return typeName; } \

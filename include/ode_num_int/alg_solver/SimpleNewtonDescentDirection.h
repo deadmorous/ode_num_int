@@ -4,7 +4,7 @@
 #define _ALGSOLVER_SIMPLENEWTONDESCENTDIRECTION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "NewtonDescentDirection.h"
-#include "lu/LUFactorizer.h"
+#include "../lu/LUFactorizer.h"
 
 namespace ctm {
 namespace math {

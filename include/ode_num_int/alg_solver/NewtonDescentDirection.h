@@ -4,8 +4,8 @@
 #define _ALGSOLVER_NEWTONDESCENTDIRECTION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "JacobianProvider.h"
-#include "lu/LUFactorizerTimingStats.h"
-#include "la/sparse_util.h"
+#include "../lu/LUFactorizerTimingStats.h"
+#include "../la/sparse_util.h"
 
 namespace ctm {
 namespace math {
@@ -38,7 +38,7 @@ class NewtonDescentDirection :
         DescentDirectionPostObservers< VD > ddirPostObservers;
         JacobianObservers<VD> jacobianObservers;
         JacobianRefreshObservers jacobianRefreshObservers;
-        typename LUFactorizerTimingStats luTimingStats;
+        LUFactorizerTimingStats luTimingStats;
 
         NewtonDescentDirection() {
             auto setJpMapping = [this] {

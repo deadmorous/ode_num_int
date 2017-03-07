@@ -3,7 +3,7 @@
 #ifndef _ODESOLVER_ODESOLVERJACOBIANTRIMMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ODESOLVER_ODESOLVERJACOBIANTRIMMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "alg_solver/JacobianTrimmer.h"
+#include "../alg_solver/JacobianTrimmer.h"
 #include "OdeSolver.h"
 
 namespace ctm {

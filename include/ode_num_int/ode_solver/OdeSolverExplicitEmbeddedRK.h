@@ -4,10 +4,10 @@
 #define _ODESOLVER_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "OdeSolver.h"
-#include "ode_solver/ExplicitRKHelper.h"
-#include "ode_solver/OdeSolverErrorNormCalculator.h"
-#include "ode_solver/OdeSolverStepSizeController.h"
-#include "ode_solver/OdeSolverEventController.h"
+#include "ExplicitRKHelper.h"
+#include "OdeSolverErrorNormCalculator.h"
+#include "OdeSolverStepSizeController.h"
+#include "OdeSolverEventController.h"
 
 namespace ctm {
 namespace math {

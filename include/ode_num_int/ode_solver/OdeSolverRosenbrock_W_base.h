@@ -9,7 +9,7 @@
 #include "OdeSolverErrorNormCalculator.h"
 #include "OdeSolverStepSizeController.h"
 #include "OdeSolverEventController.h"
-#include "lu/LUFactorizer.h"
+#include "../lu/LUFactorizer.h"
 
 namespace ctm {
 namespace math {

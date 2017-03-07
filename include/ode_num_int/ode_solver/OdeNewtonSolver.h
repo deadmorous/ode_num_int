@@ -4,7 +4,7 @@
 #define _ODESOLVER_ODENEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "OdeSolver.h"
-#include "alg_solver/NewtonSolverInterface.h"
+#include "../alg_solver/NewtonSolverInterface.h"
 
 namespace ctm {
 namespace math {
