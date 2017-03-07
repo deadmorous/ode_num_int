@@ -1,5 +1,5 @@
 #include "ode_num_int/OdeNumIntClassesRegistrator.h"
-#include "ode_num_int/ode/reg/OdeTestModelClassesRegistrator.h"
+#include "ode_num_int/OdeTestModelClassesRegistrator.h"
 
 void registerTypes()
     {
