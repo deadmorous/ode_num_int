@@ -1,0 +1,1 @@
+#include "./alg/SimpleNewtonDescentDirection.h"
