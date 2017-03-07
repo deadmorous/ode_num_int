@@ -1,9 +1,9 @@
 // test_ode_time_stepper.cpp
 
-#include "ode/test_models/CoupledNonlinearOscillators.h"
-#include "alg/JacobianHartUpdateNewtonDescentDirection.h"
-#include "ode/OdeStepMappingEuler.h"
-#include "alg/NewtonSolver.h"
+#include "ode_num_int/CoupledNonlinearOscillators.h"
+#include "ode_num_int/JacobianHartUpdateNewtonDescentDirection.h"
+#include "ode_num_int/OdeStepMappingEuler.h"
+#include "ode_num_int/NewtonSolver.h"
 
 #include <iostream>
 

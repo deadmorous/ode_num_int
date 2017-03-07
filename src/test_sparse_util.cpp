@@ -1,6 +1,6 @@
-// test_sparse_util.cpp
+// test_SparseMatrixTemplate.cpp
 
-#include "la/sparse_util.h"
+#include "ode_num_int/la/SparseMatrixTemplate.h"
 
 #include <iostream>
 

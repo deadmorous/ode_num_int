@@ -8,8 +8,8 @@
 #include <x86intrin.h>
 #endif // __linux__
 
-#include "timing/OpaqueTickCounter.h"
-#include "infra/cxx_assert.h"
+#include "ode_num_int/OpaqueTickCounter.h"
+#include "ode_num_int/infra/cxx_assert.h"
 
 void OpaqueTickCounter::Start()
     {

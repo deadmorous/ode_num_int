@@ -4,7 +4,7 @@
 #define _ALG_INTERFACES_JACOBIANTRIMMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./VectorMapping.h"
-#include "../../la/sparse_util.h"
+#include "../../la/SparseMatrixTemplate.h"
 
 namespace ctm {
 namespace math {

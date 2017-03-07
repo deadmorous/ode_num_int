@@ -1,6 +1,6 @@
 // test_vector_mapping.cpp
 
-#include "alg/VectorNarrowingMapping.h"
+#include "ode_num_int/VectorNarrowingMapping.h"
 #include <iostream>
 
 using namespace std;

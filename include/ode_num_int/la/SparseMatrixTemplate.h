@@ -1,7 +1,7 @@
-// sparse_util.h
+// SparseMatrixTemplate.h
 
-#ifndef _LA_SPARSE_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _LA_SPARSE_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _LA_SPARSEMATRIXTEMPLATE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _LA_SPARSEMATRIXTEMPLATE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <map>
 #include <vector>
@@ -14,7 +14,7 @@
 #include "../infra/cxx_assert.h"
 #include "../infra/cxx_mock_ptr.h"
 #include "../infra/cxx_exception.h"
-#include "./vector_util.h"
+#include "./VectorTemplate.h"
 
 namespace ctm {
 namespace math {
@@ -1122,4 +1122,4 @@ inline void printScilabMatrix( S& stream, const SparseMatrixTemplate<D>& m, cons
 } // end namespace math
 } // end namespace ctm
 
-#endif // _LA_SPARSE_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _LA_SPARSEMATRIXTEMPLATE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

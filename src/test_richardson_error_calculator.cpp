@@ -1,9 +1,9 @@
 // test_richardson_error_calculator.cpp
 
 #include <iostream>
-#include "ode/util/RichardsonErrorCalculator.h"
-#include "ode/OdeSolverRK4.h"
-#include "ode/test_models/CoupledNonlinearOscillators.h"
+#include "ode_num_int/RichardsonErrorCalculator.h"
+#include "ode_num_int/OdeSolverRK4.h"
+#include "ode_num_int/CoupledNonlinearOscillators.h"
 
 using namespace std;
 using namespace ctm;

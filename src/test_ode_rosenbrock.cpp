@@ -1,9 +1,9 @@
 // test_ode_rosenbrock.cpp
 
-#include "ode/OdeSolverRosenbrock_SW2_4.h"
-#include "ode/test_models/CoupledNonlinearOscillators.h"
-#include "ode/ErrorInfNormCalculator.h"
-#include "ode/OdeStepSizeSimpleController.h"
+#include "ode_num_int/OdeSolverRosenbrock_SW2_4.h"
+#include "ode_num_int/CoupledNonlinearOscillators.h"
+#include "ode_num_int/ErrorInfNormCalculator.h"
+#include "ode_num_int/OdeStepSizeSimpleController.h"
 
 #include <iostream>
 

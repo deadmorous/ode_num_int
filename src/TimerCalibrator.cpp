@@ -1,9 +1,9 @@
 // timer_calibrator.cpp
 
-#include "timing/TimerCalibrator.h"
-#include "infra/cxx_assert.h"
-#include "util/sys_time.h"
-#include "infra/cxx_exception.h"
+#include "ode_num_int/TimerCalibrator.h"
+#include "ode_num_int/infra/cxx_assert.h"
+#include "ode_num_int/util/sys_time.h"
+#include "ode_num_int/infra/cxx_exception.h"
 #include <sstream>
 
 namespace ctm {

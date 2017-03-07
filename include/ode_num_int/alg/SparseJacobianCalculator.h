@@ -3,7 +3,7 @@
 #ifndef _ALG_SPARSEJACOBIANCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ALG_SPARSEJACOBIANCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "../la/sparse_util.h"
+#include "../la/SparseMatrixTemplate.h"
 #include "./interfaces/VectorMapping.h"
 #include <set>
 #include <algorithm>
