@@ -1,6 +1,6 @@
 // test_ode_time_stepper.cpp
 
-#include "ode_test_models.h"
+#include "ode/test_models/CoupledNonlinearOscillators.h"
 #include "alg/JacobianHartUpdateNewtonDescentDirection.h"
 #include "ode/OdeStepMappingEuler.h"
 #include "alg/NewtonSolver.h"

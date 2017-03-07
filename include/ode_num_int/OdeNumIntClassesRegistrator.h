@@ -1,14 +1,14 @@
-// reg_all.h
+// OdeNumIntClassesRegistrator.h
 
-#ifndef _REG_ALL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _REG_ALL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODENUMINTCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODENUMINTCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "reg_algebraic_eqn_solver.h"
-#include "reg_ode_event_controller.h"
-#include "reg_ode_solver.h"
-#include "reg_ode_solvers.h"
-#include "reg_ode_time_stepper.h"
-#include "reg_ode_solver_output.h"
+#include "./alg/reg/AlgebraicSolverClassesRegistrator.h"
+#include "./ode/reg/OdeEventControllerClassesRegistrator.h"
+#include "./ode/reg/OdeSolverCommonClassesRegistrator.h"
+#include "./ode/reg/OdeSolverClassesRegistrator.h"
+#include "./ode/reg/OdeStepMappingClassesRegistrator.h"
+#include "./ode/reg/OdeSolverOutputClassesRegistrator.h"
 
 namespace ctm {
 namespace math {
@@ -29,4 +29,4 @@ class OdeNumIntClassesRegistrator
 } // end namespace math
 } // end namespace ctm
 
-#endif // _REG_ALL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODENUMINTCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

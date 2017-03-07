@@ -7,7 +7,7 @@
 #include "ode/interfaces/OdeStepSizeController.h"
 #include "ode/interfaces/OdeEventController.h"
 #include "ode/interfaces/OdeSolver.h"
-#include "error_stats.h"
+#include "../../util/ErrorStats.h"
 
 namespace ctm {
 namespace math {

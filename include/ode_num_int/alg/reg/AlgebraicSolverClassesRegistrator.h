@@ -3,20 +3,20 @@
 #ifndef _REG_ALGEBRAIC_EQN_SOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _REG_ALGEBRAIC_EQN_SOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "alg/DefaultJacobianProvider.h"
-#include "alg/SparseJacobianProvider.h"
-#include "alg/SimpleErrorEstimator.h"
-#include "alg/SimpleNewtonDescentDirection.h"
-#include "alg/JacobianWidthBasedTrimmer.h"
-#include "alg/JacobianThresholdBasedTrimmer.h"
-#include "alg/JacobianBroydenUpdateNewtonDescentDirection.h"
-#include "alg/JacobianFakeBroydenUpdateNewtonDescentDirection.h"
-#include "alg/JacobianLazyFakeBroydenUpdateNewtonDescentDirection.h"
-#include "alg/JacobianHartUpdateNewtonDescentDirection.h"
-#include "alg/ConstJacobianNewtonDescentDirection.h"
-#include "alg/SimpleNewtonLinearSearch.h"
-#include "alg/NewtonIterationPerformerImpl.h"
-#include "alg/NewtonSolver.h"
+#include "../DefaultJacobianProvider.h"
+#include "../SparseJacobianProvider.h"
+#include "../SimpleErrorEstimator.h"
+#include "../SimpleNewtonDescentDirection.h"
+#include "../JacobianWidthBasedTrimmer.h"
+#include "../JacobianThresholdBasedTrimmer.h"
+#include "../JacobianBroydenUpdateNewtonDescentDirection.h"
+#include "../JacobianFakeBroydenUpdateNewtonDescentDirection.h"
+#include "../JacobianLazyFakeBroydenUpdateNewtonDescentDirection.h"
+#include "../JacobianHartUpdateNewtonDescentDirection.h"
+#include "../ConstJacobianNewtonDescentDirection.h"
+#include "../SimpleNewtonLinearSearch.h"
+#include "../NewtonIterationPerformerImpl.h"
+#include "../NewtonSolver.h"
 
 namespace ctm {
 
