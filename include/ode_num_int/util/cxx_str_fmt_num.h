@@ -1,7 +1,7 @@
 // cxx_str_fmt_num.h
 
-#ifndef _CXX_STR_FMT_NUM_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
-#define _CXX_STR_FMT_NUM_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#ifndef _UTIL_CXX_STR_FMT_NUM_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _UTIL_CXX_STR_FMT_NUM_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <string>
 
@@ -25,4 +25,4 @@ inline std::string FormatHex( unsigned int x )
 } // end namespace cxx
 } // end namespace ctm
 
-#endif // _CXX_STR_FMT_NUM_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#endif // _UTIL_CXX_STR_FMT_NUM_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

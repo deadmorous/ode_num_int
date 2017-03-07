@@ -1,10 +1,10 @@
 // DefaultJacobianProvider.h
 
-#ifndef _ALGSOLVER_DEFAULTJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ALGSOLVER_DEFAULTJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ALG_DEFAULTJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ALG_DEFAULTJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/JacobianProvider.h"
-#include "computeJacobian.h"
+#include "./computeJacobian.h"
 
 namespace ctm {
 namespace math {
@@ -38,4 +38,4 @@ class DefaultJacobianProvider :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ALGSOLVER_DEFAULTJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ALG_DEFAULTJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

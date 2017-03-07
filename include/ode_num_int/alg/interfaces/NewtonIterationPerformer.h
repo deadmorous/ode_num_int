@@ -1,11 +1,11 @@
 // NewtonIterationPerformer.h
 
-#ifndef _ALGSOLVER_NEWTONITERATIONPERFORMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ALGSOLVER_NEWTONITERATIONPERFORMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ALG_INTERFACES_NEWTONITERATIONPERFORMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ALG_INTERFACES_NEWTONITERATIONPERFORMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ErrorEstimator.h"
-#include "NewtonDescentDirection.h"
-#include "NewtonLinearSearch.h"
+#include "./ErrorEstimator.h"
+#include "./NewtonDescentDirection.h"
+#include "./NewtonLinearSearch.h"
 
 namespace ctm {
 namespace math {
@@ -38,4 +38,4 @@ CTM_DEF_NOTIFIED_PROP_VD_TEMPLATE_CLASS(
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ALGSOLVER_NEWTONITERATIONPERFORMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ALG_INTERFACES_NEWTONITERATIONPERFORMER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

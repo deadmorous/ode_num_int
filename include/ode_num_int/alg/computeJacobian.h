@@ -1,7 +1,7 @@
 // computeJacobian.h
 
-#ifndef _ALGSOLVER_COMPUTE_JACOBIAN_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ALGSOLVER_COMPUTE_JACOBIAN_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ALG_COMPUTEJACOBIAN_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ALG_COMPUTEJACOBIAN_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/VectorMapping.h"
 #include "../la/sparse_util.h"
@@ -50,4 +50,4 @@ inline sparse::SparseMatrix< typename V::value_type > computeJacobian( const Map
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ALGSOLVER_COMPUTE_JACOBIAN_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ALG_COMPUTEJACOBIAN_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

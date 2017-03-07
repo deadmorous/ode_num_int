@@ -1,7 +1,7 @@
-// observers.h
+// cxx_observers.h
 
-#ifndef _CXX_OBSERVERS_H_C2F4FC47_8A32_4855_BB43_2AD22EBE0C7E_
-#define _CXX_OBSERVERS_H_C2F4FC47_8A32_4855_BB43_2AD22EBE0C7E_
+#ifndef _INFRA_CXX_OBSERVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_CXX_OBSERVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <functional>
 #include <map>
@@ -145,4 +145,4 @@ inline void forwardObservers( cxx::TerminatingObservers<args...>& caller, cxx::T
 } // end namespace cxx
 } // end namespace ctm
 
-#endif // _CXX_OBSERVERS_H_C2F4FC47_8A32_4855_BB43_2AD22EBE0C7E_
+#endif // _INFRA_CXX_OBSERVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

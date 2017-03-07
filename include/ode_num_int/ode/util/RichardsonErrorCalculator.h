@@ -1,7 +1,7 @@
-// richardson_error_calculator.h
+// RichardsonErrorCalculator.h
 
-#ifndef _RICHARDSON_ERROR_CALCULATOR_H_
-#define _RICHARDSON_ERROR_CALCULATOR_H_
+#ifndef _ODE_UTIL_RICHARDSONERRORCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_UTIL_RICHARDSONERRORCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "ode/interfaces/ErrorNormCalculator.h"
 #include "ode/interfaces/OdeStepSizeController.h"
@@ -93,4 +93,4 @@ class RichardsonErrorCalculator :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _RICHARDSON_ERROR_CALCULATOR_H_
+#endif // _ODE_UTIL_RICHARDSONERRORCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

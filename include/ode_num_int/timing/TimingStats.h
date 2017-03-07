@@ -6,7 +6,7 @@
 #define CTM_ODE_NUM_INT_ENABLE_TIMING
 
 #ifdef CTM_ODE_NUM_INT_ENABLE_TIMING
-#include "OpaqueTickCounter.h"
+#include "./OpaqueTickCounter.h"
 
 namespace ctm {
 namespace sys {

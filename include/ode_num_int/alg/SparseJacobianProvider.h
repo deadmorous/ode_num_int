@@ -1,11 +1,11 @@
 // SparseJacobianProvider.h
 
-#ifndef _ALGSOLVER_SPARSEJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ALGSOLVER_SPARSEJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ALG_SPARSEJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ALG_SPARSEJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/JacobianProvider.h"
-#include "computeJacobian.h"
-#include "SparseJacobianCalculator.h"
+#include "./computeJacobian.h"
+#include "./SparseJacobianCalculator.h"
 
 namespace ctm {
 namespace math {
@@ -59,4 +59,4 @@ class SparseJacobianProvider :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ALGSOLVER_SPARSEJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ALG_SPARSEJACOBIANPROVIDER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

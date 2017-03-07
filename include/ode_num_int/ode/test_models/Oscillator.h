@@ -1,7 +1,7 @@
-// ode_model_oscillator.h
+// Oscillator.h
 
-#ifndef _ODE_MODEL_OSCILLATOR_H_
-#define _ODE_MODEL_OSCILLATOR_H_
+#ifndef _ODE_TEST_MODELS_OSCILLATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_TEST_MODELS_OSCILLATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "../interfaces/OdeRhs.h"
 
@@ -78,4 +78,4 @@ class Oscillator :
 } // end namespace testmodels
 } // end namespace ctm
 
-#endif // _ODE_MODEL_OSCILLATOR_H_
+#endif // _ODE_TEST_MODELS_OSCILLATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

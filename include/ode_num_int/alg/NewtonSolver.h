@@ -1,14 +1,14 @@
 // NewtonSolver.h
 
-#ifndef _ALGSOLVER_NEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ALGSOLVER_NEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ALG_NEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ALG_NEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/NewtonSolverInterface.h"
-#include "NewtonIterationPerformerImpl.h"
-#include "SimpleErrorEstimator.h"
-#include "SimpleNewtonDescentDirection.h"
-#include "SimpleNewtonLinearSearch.h"
-#include "DefaultJacobianProvider.h"
+#include "./NewtonIterationPerformerImpl.h"
+#include "./SimpleErrorEstimator.h"
+#include "./SimpleNewtonDescentDirection.h"
+#include "./SimpleNewtonLinearSearch.h"
+#include "./DefaultJacobianProvider.h"
 
 namespace ctm {
 namespace math {
@@ -113,4 +113,4 @@ class NewtonSolver :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ALGSOLVER_NEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ALG_NEWTONSOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

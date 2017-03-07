@@ -19,8 +19,8 @@ On Linux, link program to the librt library (specify the \c -lrt link option)
 /// \file sys_time.h
 /// \brief \ref CTMSTD_SYS_TIME
 
-#ifndef _SYS_TIME_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
-#define _SYS_TIME_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#ifndef _UTIL_SYS_TIME_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _UTIL_SYS_TIME_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <sstream>
 #include <iomanip>
@@ -103,4 +103,4 @@ inline void SleepSeconds( int sec ) {
 } // end namespace sys
 } // end namespace ctm
 
-#endif // _SYS_TIME_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#endif // _UTIL_SYS_TIME_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

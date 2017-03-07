@@ -1,10 +1,10 @@
 // OdeRhsVectorMapping.h
 
-#ifndef _ODESOLVER_ODERHSVECTORMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODERHSVECTORMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_INTERFACES_ODERHSVECTORMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_INTERFACES_ODERHSVECTORMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "../../alg/interfaces/VectorMapping.h"
-#include "OdeRhs.h"
+#include "./OdeRhs.h"
 
 namespace ctm {
 namespace math {
@@ -71,4 +71,4 @@ inline std::shared_ptr< OdeRhsVectorMapping<VD> > makeOdeRhsVectorMapping(
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODERHSVECTORMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_INTERFACES_ODERHSVECTORMAPPING_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

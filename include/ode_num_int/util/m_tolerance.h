@@ -15,8 +15,8 @@ as long as the macros cannot be placed into a namespace.
 /// \file m_tolerance.h
 /// \brief \ref CTMSTD_MATH_TOLERANCE
 
-#ifndef _M_TOLERANCE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
-#define _M_TOLERANCE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#ifndef _UTIL_M_TOLERANCE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _UTIL_M_TOLERANCE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 /** \addtogroup CTMSTD_MATH_TOLERANCE*/
 //@{
@@ -29,4 +29,4 @@ as long as the macros cannot be placed into a namespace.
 
 //@}
 
-#endif // _M_TOLERANCE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#endif // _UTIL_M_TOLERANCE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

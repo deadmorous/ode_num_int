@@ -1,10 +1,10 @@
 // OdeSolverExplicitRK.h
 
-#ifndef _ODESOLVER_ODESOLVEREXPLICITRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODESOLVEREXPLICITRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_ODESOLVEREXPLICITRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_ODESOLVEREXPLICITRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/OdeSolver.h"
-#include "ExplicitRKHelper.h"
+#include "./ExplicitRKHelper.h"
 #include "./interfaces/OdeSolverEventController.h"
 
 namespace ctm {
@@ -136,4 +136,4 @@ class OdeSolverExplicitRK :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODESOLVEREXPLICITRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_ODESOLVEREXPLICITRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

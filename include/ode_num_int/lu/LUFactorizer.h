@@ -3,7 +3,7 @@
 #ifndef _LU_LUFACTORIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _LU_LUFACTORIZER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "LUFactorizerTimingStats.h"
+#include "./LUFactorizerTimingStats.h"
 #include "../infra/cxx_zeroinit.h"
 
 // #define CTM_MATH_LU_USE_MX_FAST_CACHE

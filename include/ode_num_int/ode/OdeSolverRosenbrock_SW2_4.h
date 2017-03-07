@@ -1,9 +1,9 @@
 // OdeSolverRosenbrock_SW2_4.h
 
-#ifndef _ODESOLVER_ODESOLVERROSENBROCK_SW2_4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODESOLVERROSENBROCK_SW2_4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_ODESOLVERROSENBROCK_SW2_4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_ODESOLVERROSENBROCK_SW2_4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "OdeSolverRosenbrock_W_base.h"
+#include "./OdeSolverRosenbrock_W_base.h"
 #include "./interfaces/OdeSolverErrorNormCalculator.h"
 #include "./interfaces/OdeSolverStepSizeController.h"
 #include "./interfaces/OdeSolverEventController.h"
@@ -263,4 +263,4 @@ class OdeSolverRosenbrock_SW2_4 :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODESOLVERROSENBROCK_SW2_4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_ODESOLVERROSENBROCK_SW2_4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

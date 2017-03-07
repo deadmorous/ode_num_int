@@ -1,7 +1,7 @@
-// reg_ode_test_models.h
+// OdeTestModelClassesRegistrator.h
 
-#ifndef _REG_ODE_TEST_MODELS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _REG_ODE_TEST_MODELS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_REG_ODETESTMODELCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_REG_ODETESTMODELCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "../test_models/Oscillator.h"
 #include "../test_models/CoupledNonlinearOscillators.h"
@@ -30,4 +30,4 @@ class OdeTestModelClassesRegistrator
 } // end namespace testmodels
 } // end namespace ctm
 
-#endif // _REG_ODE_TEST_MODELS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_REG_ODETESTMODELCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

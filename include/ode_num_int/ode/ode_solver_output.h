@@ -1,11 +1,11 @@
 // ode_solver_output.h
 
-#ifndef _ODESOLVER_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "OdeSolverConfiguration.h"
+#include "./OdeSolverConfiguration.h"
 #include "../timing/TimerCalibrator.h"
-#include "OdeVarNameGenerator.h"
+#include "./OdeVarNameGenerator.h"
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -623,4 +623,4 @@ class OdeSolverStepSolutionColumnwiseOutput :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_ODE_SOLVER_OUTPUT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

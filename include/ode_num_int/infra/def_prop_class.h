@@ -1,9 +1,9 @@
 // def_prop_class.h
 
-#ifndef _DEF_PROP_CLASS_H_C2F4FC47_8A32_4855_BB43_2AD22EBE0C7E_
-#define _DEF_PROP_CLASS_H_C2F4FC47_8A32_4855_BB43_2AD22EBE0C7E_
+#ifndef _INFRA_DEF_PROP_CLASS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_DEF_PROP_CLASS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "cxx_observers.h"
+#include "./cxx_observers.h"
 
 namespace ctm {
 namespace def_prop_class_util {
@@ -101,4 +101,4 @@ struct function_traits<R(C::*)(Args...) const> {
         PropType m_value; \
     };
 
-#endif // _DEF_PROP_CLASS_H_C2F4FC47_8A32_4855_BB43_2AD22EBE0C7E_
+#endif // _INFRA_DEF_PROP_CLASS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

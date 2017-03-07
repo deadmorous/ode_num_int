@@ -1,7 +1,7 @@
-// ode_model_sliding_point.h
+// SlidingPoint.h
 
-#ifndef _ODE_MODEL_SLIDING_POINT_H_
-#define _ODE_MODEL_SLIDING_POINT_H_
+#ifndef _ODE_TEST_MODELS_SLIDINGPOINT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_TEST_MODELS_SLIDINGPOINT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "../interfaces/OdeRhs.h"
 #include "../../util/m_const.h"
@@ -171,4 +171,4 @@ class SlidingPoint :
 } // end namespace testmodels
 } // end namespace ctm
 
-#endif // _ODE_MODEL_SLIDING_POINT_H_
+#endif // _ODE_TEST_MODELS_SLIDINGPOINT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

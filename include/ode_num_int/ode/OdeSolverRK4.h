@@ -1,9 +1,9 @@
-// ode_rk4.h
+// OdeSolverRK4.h
 
-#ifndef _ODESOLVER_ODESOLVERRK4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODESOLVERRK4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_ODESOLVERRK4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_ODESOLVERRK4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "OdeSolverExplicitRK.h"
+#include "./OdeSolverExplicitRK.h"
 
 namespace ctm {
 namespace math {
@@ -39,4 +39,4 @@ class OdeSolverRK4 :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODESOLVERRK4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_ODESOLVERRK4_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

@@ -1,7 +1,7 @@
-// reg_ode_solver.h
+// OdeSolverCommonClassesRegistrator.h
 
-#ifndef _REG_ODE_SOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _REG_ODE_SOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_REG_ODESOLVERCOMMONCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_REG_ODESOLVERCOMMONCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "../ErrorInfNormCalculator.h"
 #include "../OdeStepSizeSimpleController.h"
@@ -24,4 +24,4 @@ class OdeSolverCommonClassesRegistrator
 } // end namespace math
 } // end namespace ctm
 
-#endif // _REG_ODE_SOLVER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_REG_ODESOLVERCOMMONCLASSESREGISTRATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

@@ -16,8 +16,8 @@ Contains declarations for some mathematical constants.
 /// \file m_const.h
 /// \brief \ref CTMSTD_MATH_CONST
 
-#ifndef _EX_PI_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
-#define _EX_PI_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#ifndef _UTIL_M_CONST_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _UTIL_M_CONST_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #ifdef __gnu_linux__
 #include <math.h>
@@ -33,4 +33,4 @@ Contains declarations for some mathematical constants.
 
 #endif // __gnu_linux__
 
-#endif // _EX_PI_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#endif // _UTIL_M_CONST_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

@@ -1,11 +1,11 @@
 // OdeSolverImplicitEuler.h
 
-#ifndef _ODESOLVER_ODESOLVERIMPLICITEULER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODESOLVERIMPLICITEULER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_ODESOLVERIMPLICITEULER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_ODESOLVERIMPLICITEULER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/OdeNewtonSolver.h"
 #include "./interfaces/OdeEventController.h"
-#include "OdeStepMappingEuler.h"
+#include "./OdeStepMappingEuler.h"
 #include "../alg/VectorReorderingMapping.h"
 
 namespace ctm {
@@ -211,4 +211,4 @@ class OdeSolverImplicitEuler :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODESOLVERIMPLICITEULER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_ODESOLVERIMPLICITEULER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

@@ -1,7 +1,7 @@
 // vector_util.h
 
-#ifndef _VECTOR_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _VECTOR_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _LA_VECTOR_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _LA_VECTOR_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <vector>
 #include <algorithm>
@@ -519,4 +519,4 @@ inline ctm::math::VectorTemplate< typename VD::vector_data_type > sqrt( const ct
 
 } // end namespace std
 
-#endif // _VECTOR_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _LA_VECTOR_UTIL_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

@@ -13,8 +13,8 @@ This module implements several commonly used functions for lexical analysis.
 /// \file lex_idnum.h
 /// \brief \ref CTMSTD_LANG_LEX
 
-#ifndef _LEX_IDNUM_H_B8BBDA76_D223_4706_8AD7_5B74AE3D0CD1_
-#define _LEX_IDNUM_H_B8BBDA76_D223_4706_8AD7_5B74AE3D0CD1_
+#ifndef _UTIL_LEX_IDNUM_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _UTIL_LEX_IDNUM_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <regex>
 
@@ -61,4 +61,4 @@ inline bool IsHexIntegerNumber( const char *str ) {
 } // end namespace lang
 } // end namespace ctm
 
-#endif // _LEX_IDNUM_H_B8BBDA76_D223_4706_8AD7_5B74AE3D0CD1_
+#endif // _UTIL_LEX_IDNUM_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

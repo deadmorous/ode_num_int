@@ -41,8 +41,8 @@ The macro is commonly used to verify that a specific function returns non-zero.
 /// In release builds, just evaluates the argument expression.
 //@}
 
-#ifndef _CXX_ASSERT_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
-#define _CXX_ASSERT_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#ifndef _INFRA_CXX_ASSERT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_CXX_ASSERT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #ifdef _WIN32
 /////////////////////////////////////////////////////////////////////////////
@@ -108,4 +108,4 @@ The macro is commonly used to verify that a specific function returns non-zero.
 #error "Unsupported platform"
 #endif
 
-#endif // _CXX_ASSERT_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#endif // _INFRA_CXX_ASSERT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

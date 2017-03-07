@@ -1,7 +1,7 @@
-// error_stats.h
+// ErrorStats.h
 
-#ifndef _ERROR_STATS_H_
-#define _ERROR_STATS_H_
+#ifndef _UTIL_ERRORSTATS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _UTIL_ERRORSTATS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "la/vector_util.h"
 
@@ -104,4 +104,4 @@ class ErrorStats
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ERROR_STATS_H_
+#endif // _UTIL_ERRORSTATS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

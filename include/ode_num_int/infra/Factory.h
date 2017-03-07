@@ -1,7 +1,7 @@
 // Factory.h
 
-#ifndef _INFRA_FACTORY_H_CF3E_424f_9766_BA04D388199F_
-#define _INFRA_FACTORY_H_CF3E_424f_9766_BA04D388199F_
+#ifndef _INFRA_FACTORY_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _INFRA_FACTORY_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include <string>
 #include <memory>
@@ -147,4 +147,4 @@ struct ImplementationTypeTraits< Implementation<args...> > { \
 #define CTM_DECL_IMPLEMENTATION_TEMPLATE_REGISTRATOR( Implementation, ... ) \
     ImplementationRegistrator< Implementation<__VA_ARGS__> > Implementation##Registrator;
 
-#endif // _INFRA_FACTORY_H_CF3E_424f_9766_BA04D388199F_
+#endif // _INFRA_FACTORY_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_

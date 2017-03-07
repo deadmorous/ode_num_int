@@ -1,10 +1,10 @@
 // OdeSolverExplicitEmbeddedRK.h
 
-#ifndef _ODESOLVER_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _ODESOLVER_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _ODE_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#define _ODE_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
 #include "./interfaces/OdeSolver.h"
-#include "ExplicitRKHelper.h"
+#include "./ExplicitRKHelper.h"
 #include "./interfaces/OdeSolverErrorNormCalculator.h"
 #include "./interfaces/OdeSolverStepSizeController.h"
 #include "./interfaces/OdeSolverEventController.h"
@@ -225,4 +225,4 @@ class OdeSolverExplicitEmbeddedRK :
 } // end namespace math
 } // end namespace ctm
 
-#endif // _ODESOLVER_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _ODE_ODESOLVEREXPLICITEMBEDDEDRK_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
