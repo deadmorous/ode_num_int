@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "richardson_error_calculator.h"
-#include "ode_solver/OdeSolverRK4.h"
+#include "ode/OdeSolverRK4.h"
 #include "ode_test_models.h"
 
 using namespace std;

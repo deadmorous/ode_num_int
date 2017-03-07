@@ -1,9 +1,9 @@
 // test_ode_rosenbrock.cpp
 
-#include "ode_solver/OdeSolverRosenbrock_SW2_4.h"
+#include "ode/OdeSolverRosenbrock_SW2_4.h"
 #include "ode_test_models.h"
-#include "ode_solver/ErrorInfNormCalculator.h"
-#include "ode_solver/OdeStepSizeSimpleController.h"
+#include "ode/ErrorInfNormCalculator.h"
+#include "ode/OdeStepSizeSimpleController.h"
 
 #include <iostream>
 

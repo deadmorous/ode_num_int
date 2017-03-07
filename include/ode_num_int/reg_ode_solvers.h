@@ -3,16 +3,16 @@
 #ifndef _REG_ODE_SOLVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _REG_ODE_SOLVERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ode_solver/OdeSolverExplicitEuler.h"
-#include "ode_solver/OdeSolverRK4.h"
-#include "ode_solver/OdeSolverDOPRI45.h"
-#include "ode_solver/OdeSolverDOPRI56.h"
-#include "ode_solver/OdeSolverDOPRI78.h"
-#include "ode_solver/OdeSolverRosenbrock_W1.h"
-#include "ode_solver/OdeSolverRosenbrock_SW2_4.h"
-#include "ode_solver/OdeSolverGragg.h"
-#include "ode_solver/OdeSolverExtrapolator.h"
-#include "ode_solver/OdeSolverImplicitEuler.h"
+#include "ode/OdeSolverExplicitEuler.h"
+#include "ode/OdeSolverRK4.h"
+#include "ode/OdeSolverDOPRI45.h"
+#include "ode/OdeSolverDOPRI56.h"
+#include "ode/OdeSolverDOPRI78.h"
+#include "ode/OdeSolverRosenbrock_W1.h"
+#include "ode/OdeSolverRosenbrock_SW2_4.h"
+#include "ode/OdeSolverGragg.h"
+#include "ode/OdeSolverExtrapolator.h"
+#include "ode/OdeSolverImplicitEuler.h"
 
 namespace ctm {
 

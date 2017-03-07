@@ -3,8 +3,8 @@
 #ifndef _REG_ODE_TIME_STEPPER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _REG_ODE_TIME_STEPPER_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ode_solver/SpecifiedOdeInitState.h"
-#include "ode_solver/OdeStepMappingEuler.h"
+#include "ode/SpecifiedOdeInitState.h"
+#include "ode/OdeStepMappingEuler.h"
 
 namespace ctm {
 

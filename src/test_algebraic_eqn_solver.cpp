@@ -1,8 +1,8 @@
 // test_algebraic_eqn_solver.cpp
 
-#include "alg_solver/MappingNormalizer.h"
-#include "alg_solver/SimpleNewtonDescentDirection.h"
-#include "alg_solver/NewtonSolver.h"
+#include "alg/MappingNormalizer.h"
+#include "alg/SimpleNewtonDescentDirection.h"
+#include "alg/NewtonSolver.h"
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 // test_sparse_jacobian.cpp
 
-#include "alg_solver/SparseJacobianCalculator.h"
-#include "alg_solver/computeJacobian.h"
+#include "alg/SparseJacobianCalculator.h"
+#include "alg/computeJacobian.h"
 #include <iostream>
 
 namespace {

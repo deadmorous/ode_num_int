@@ -1,5 +1,5 @@
-#include "ode_num_int/ode_solver/OdeSolverConfiguration.h"
-#include "ode_num_int/ode_solver/OdeSolverRK4.h"
+#include "ode_num_int/ode/OdeSolverConfiguration.h"
+#include "ode_num_int/ode/OdeSolverRK4.h"
 #include "reg.h"
 
 #include <iostream>
