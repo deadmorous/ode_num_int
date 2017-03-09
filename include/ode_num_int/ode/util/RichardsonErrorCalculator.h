@@ -3,10 +3,10 @@
 #ifndef _ODE_UTIL_RICHARDSONERRORCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _ODE_UTIL_RICHARDSONERRORCALCULATOR_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#include "ode/interfaces/ErrorNormCalculator.h"
-#include "ode/interfaces/OdeStepSizeController.h"
-#include "ode/interfaces/OdeEventController.h"
-#include "ode/interfaces/OdeSolver.h"
+#include "../interfaces/ErrorNormCalculator.h"
+#include "../interfaces/OdeStepSizeController.h"
+#include "../interfaces/OdeEventController.h"
+#include "../interfaces/OdeSolver.h"
 #include "../../util/ErrorStats.h"
 
 namespace ctm {
