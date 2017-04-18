@@ -5,11 +5,9 @@
 
 #include "../defs.h"
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 typedef unsigned __int64 OpaqueTickType;
-#endif // _WIN32
-
-#ifdef __linux__
+#else // _MSC_VER
 typedef unsigned long long OpaqueTickType;
 #endif // __linux__
 
