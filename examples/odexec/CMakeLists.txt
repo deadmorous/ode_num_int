@@ -8,3 +8,6 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILE_LIST} ${HEADER_FILES})
 add_dependencies (${PROJECT_NAME} ode_num_int)
 target_link_libraries (${PROJECT_NAME} ode_num_int)
 
+set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY
+  COMPILE_DEFINITIONS $<$<CONFIG:Debug>:_DEBUG>
+)
