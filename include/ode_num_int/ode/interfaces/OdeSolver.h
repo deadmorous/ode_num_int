@@ -26,7 +26,7 @@ struct OdeSolverPostObserverArg
     {
         CTM_DECL_THIS_CLASS_ALIAS( OdeSolverPostObserverArg<VD> )
         CTM_DECL_SIMPLE_CLASS_FIELD( typename VD::value_type, stepSize, setStepSize, 0 )
-        CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepAccepted, setStepAccepted, false )
+        CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepAccepted, setStepAccepted, true )
         CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepSizeChanged, setStepSizeChanged, false )
         CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepTruncated, setStepTruncated, false )
         CTM_DECL_SIMPLE_CLASS_FIELD( typename VD::value_type, errorNorm, setErrorNorm, 0 )

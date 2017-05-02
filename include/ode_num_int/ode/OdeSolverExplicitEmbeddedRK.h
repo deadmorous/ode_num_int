@@ -135,7 +135,8 @@ class OdeSolverExplicitEmbeddedRK :
                 this->tstat3.add( timer.Lap() );
 
                 // Invoke observers
-                this->odeSolverPostObservers( hcur, scResult.acceptStep, scResult.changeStepSize, stepTruncated, errorNorm, izfTrunc, transitionType, this );
+                this->odeSolverPostObservers( OdeSolverPostObserverArg<VD>(
+                    hcur, scResult.acceptStep, scResult.changeStepSize, stepTruncated, errorNorm, izfTrunc, transitionType, this ) );
 
                 // Reduce step size, if step is accepted, a switch has occurred, and m_h_after_switch is nonzero and less than new step size.
                 if( stepTruncated   &&   m_h_after_switch > 0   &&   m_h > m_h_after_switch )

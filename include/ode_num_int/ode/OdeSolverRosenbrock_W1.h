@@ -94,7 +94,13 @@ class OdeSolverRosenbrock_W1 :
             m_initialTime = nextTime;
             m_initialState.swap( m_nextState );
 
-            this->odeSolverPostObservers( m_h, true /*acceptStep*/, false /*changeStepSize*/, stepTruncated, 0 /*errorNorm*/, izfTrunc, transitionType, this );
+            this->odeSolverPostObservers(
+                OdeSolverPostObserverArg<VD>()
+                    .setStepSize( m_h )
+                    .setStepTruncated( stepTruncated )
+                    .setIzfTrunc( izfTrunc )
+                    .setTransitionType( transitionType )
+                    .setSolver( this ) );
 
             this->tstat2.add( timer.Lap() );
             }

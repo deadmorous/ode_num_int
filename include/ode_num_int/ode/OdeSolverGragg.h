@@ -112,7 +112,13 @@ class OdeSolverGragg :
             this->tstat2.add( timer.Lap() );
 
             // Invoke observers
-            this->odeSolverPostObservers( h, true /*acceptStep*/, false /*changeStepSize*/, stepTruncated, 0 /*errorNorm*/, izfTrunc, transitionType, this );
+            this->odeSolverPostObservers(
+                OdeSolverPostObserverArg<VD>()
+                    .setStepSize( h )
+                    .setStepTruncated( stepTruncated )
+                    .setIzfTrunc( izfTrunc )
+                    .setTransitionType( transitionType )
+                    .setSolver( this ) );
 
             this->tstat3.add( timer.Lap() );
             }

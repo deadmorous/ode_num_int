@@ -193,7 +193,8 @@ class OdeSolverExtrapolator :
                 this->tstat3.add( timer.Lap() );
 
                 // Invoke observers
-                this->odeSolverPostObservers( m_h, scResult.acceptStep, scResult.changeStepSize, stepTruncated, errorNorm, izfTrunc, transitionType, this );
+                this->odeSolverPostObservers( OdeSolverPostObserverArg<VD>(
+                    m_h, scResult.acceptStep, scResult.changeStepSize, stepTruncated, errorNorm, izfTrunc, transitionType, this ) );
 
                 this->tstat4.add( timer.Lap() );
 

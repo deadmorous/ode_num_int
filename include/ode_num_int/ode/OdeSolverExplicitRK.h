@@ -87,7 +87,12 @@ class OdeSolverExplicitRK :
             this->tstat2.add( timer.Lap() );
 
             // Invoke observers
-            this->odeSolverPostObservers( m_h, true /*acceptStep*/, false /*changeStepSize*/, stepTruncated, 0 /*errorNorm*/, izfTrunc, transitionType, this );
+            this->odeSolverPostObservers(
+                OdeSolverPostObserverArg<VD>()
+                    .setStepSize( m_h )
+                    .setIzfTrunc( izfTrunc )
+                    .setTransitionType( transitionType )
+                    .setSolver( this ) );
 
             this->tstat4.add( timer.Lap() );
             }

@@ -46,19 +46,11 @@ class RichardsonErrorCalculator :
 
             bool skipStep = false;
             auto scopedOdeRhsPreCb = cxx::makeScopedIdentifiedElement(
-                        solver->odeSolverPostObservers, [&](
-                            real_type h,
-                            bool stepAccepted,
-                            bool stepSizeChanged,
-                            bool stepTruncated,
-                            real_type errorNorm,
-                            unsigned int /*izfTrunc*/,
-                            int /*transitionType*/,
-                            const OdeSolver<VD>* s )
+                        solver->odeSolverPostObservers, [&]( const OdeSolverPostObserverArg<VD>& arg )
                 {
-                    if( !stepAccepted   ||   stepTruncated )
+                    if( !arg.stepAccepted()   ||   arg.stepTruncated() )
                         skipStep = true;
-                    if( stepSizeChanged )
+                    if( arg.stepSizeChanged() )
                         throw cxx::exception( "ODE solver changed step size, which is currently unexpected" );
                 } );
             do {

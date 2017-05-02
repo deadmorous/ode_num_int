@@ -177,24 +177,17 @@ class OdeSolverStatisticsOutput :
                 solverTotalTimer( true )
                 {}
 
-            void afterStep( real_type h,
-                             bool stepAccepted,
-                             bool stepSizeChanged,
-                             bool stepTruncated,
-                             real_type errorNorm,
-                             unsigned int izfTrunc,
-                             int transitionType,
-                             const math::OdeSolver<VD>* s )
+            void afterStep( const OdeSolverPostObserverArg<VD>& arg )
                 {
                 ++nSteps;
-                if( !stepAccepted )
+                if( !arg.stepAccepted() )
                     ++nRejectedSteps;
-                if( stepSizeChanged )
+                if( arg.stepSizeChanged() )
                     ++nStepChanges;
-                if( stepTruncated )
+                if( arg.stepTruncated() )
                     ++nTruncatedSteps;
-                if( stepAccepted )
-                    stepSizeSum += h;
+                if( arg.stepAccepted() )
+                    stepSizeSum += arg.stepSize();
                 }
 
             void beforeOdeRhs( real_type, const V&, const math::OdeRhs<VD>* ) {
@@ -311,34 +304,28 @@ class OdeSolverStepGeneralConsoleOutput :
                 m_cbAfterIteration( makeCb( solverComponents->solver()->iterationObservers, &D::afterIteration ) )
                 {}
 
-            void afterStep( real_type h,
-                            bool stepAccepted,
-                            bool stepSizeChanged,
-                            bool stepTruncated,
-                            real_type errorNorm,
-                            unsigned int izfTrunc,
-                            int transitionType,
-                            const math::OdeSolver<VD>* s )
+            void afterStep( const OdeSolverPostObserverArg<VD>& arg )
                 {
                 using namespace std;
                 ++nSteps;
 
-                auto currentTime = s->initialTime();
-                if( !this->outputNow( currentTime, stepTruncated ) )
+                auto currentTime = arg.solver()->initialTime();
+                if( !this->outputNow( currentTime, arg.stepTruncated() ) )
                     return;
 
                 auto& os = this->os();
                 os << "step " << nSteps
-                     << ", time = " << s->initialTime()
-                     << ", h = " << h
-                     << ", err = " << errorNorm
-                     << ", " << (stepAccepted? "accepted": "rejected");
-                if( stepSizeChanged )
+                     << ", time = " << arg.solver()->initialTime()
+                     << ", h = " << arg.stepSize()
+                     << ", err = " << arg.errorNorm()
+                     << ", " << (arg.stepAccepted()? "accepted": "rejected");
+                if( arg.stepSizeChanged() )
                     os << ", step size changed";
-                if( stepTruncated ) {
+                if( arg.stepTruncated() ) {
                     os << ", step truncated";
-                    if( izfTrunc != ~0u )
-                        os << " due to " << s->odeRhs()->describeZeroFunction( izfTrunc ) << " " << (transitionType>0? '+': transitionType<0? '-': '?');
+                    if( arg.izfTrunc() != ~0u )
+                        os << " due to " << arg.solver()->odeRhs()->describeZeroFunction( arg.izfTrunc() )
+                           << " " << (arg.transitionType()>0? '+': arg.transitionType()<0? '-': '?');
                     }
                 os << endl;
                 }
@@ -486,18 +473,11 @@ class OdeSolverStepSolutionConsoleOutput :
                 os << endl;
                 }
 
-            void afterStep( real_type h,
-                            bool stepAccepted,
-                            bool stepSizeChanged,
-                            bool stepTruncated,
-                            real_type errorNorm,
-                            unsigned int izfTrunc,
-                            int transitionType,
-                            const math::OdeSolver<VD>* s )
+            void afterStep( const OdeSolverPostObserverArg<VD>& arg )
                 {
-                auto currentTime = s->initialTime();
-                if( stepAccepted   &&   this->outputNow( currentTime ) )
-                    write( s );
+                auto currentTime = arg.solver()->initialTime();
+                if( arg.stepAccepted()   &&   this->outputNow( currentTime ) )
+                    write( arg.solver() );
                 }
             };
         std::unique_ptr< D > m_d;
@@ -572,16 +552,9 @@ class OdeSolverStepSolutionColumnwiseOutput :
                 m_cbAfterStep( makeCb( solverComponents->solver()->odeSolverPostObservers, &D::afterStep ) )
                 {}
 
-            void afterStep( real_type h,
-                            bool stepAccepted,
-                            bool stepSizeChanged,
-                            bool stepTruncated,
-                            real_type errorNorm,
-                            unsigned int izfTrunc,
-                            int transitionType,
-                            const math::OdeSolver<VD>* s )
+            void afterStep( const OdeSolverPostObserverArg<VD>& arg )
                 {
-                if( stepAccepted )
+                if( arg.stepAccepted() )
                     accum();
                 }
 

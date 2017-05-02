@@ -29,24 +29,16 @@ void testRichardsonErrorCalculator()
     solver->setInitialState( 0, MyVec(odeRhs->varCount()) );
 
     unsigned int nSteps = 0;
-    solver->odeSolverPostObservers.add([&](
-                                       double h,
-                                       bool stepAccepted,
-                                       bool stepSizeChanged,
-                                       bool stepTruncated,
-                                       double errorNorm,
-                                       unsigned int /*izfTrunc*/,
-                                       int /*transitionType*/,
-                                       const OdeSolver<MyVD>* s ) {
+    solver->odeSolverPostObservers.add([&]( const OdeSolverPostObserverArg<MyVD>& arg ) {
         ++nSteps;
         cout << "step " << nSteps
-             << ", time = " << s->initialTime()
-             << ", h = " << h
-             << ", err = " << errorNorm
-             << ", " << (stepAccepted? "accepted": "rejected");
-        if( stepSizeChanged )
+             << ", time = " << arg.solver()->initialTime()
+             << ", h = " << arg.stepSize()
+             << ", err = " << arg.errorNorm()
+             << ", " << (arg.stepAccepted()? "accepted": "rejected");
+        if( arg.stepSizeChanged() )
             cout << ", step size changed";
-        if( stepTruncated )
+        if( arg.stepTruncated() )
             cout << ", step truncated";
         cout << endl;
         } );

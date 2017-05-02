@@ -134,7 +134,13 @@ class OdeSolverImplicitEuler :
                     newton->iterationPerformer()->newtonDescentDirection()->reset( true );
                 }
             m_mapping4Newton->setInitialState( nextTime, m_buf );
-            this->odeSolverPostObservers( h, true /*acceptStep*/, false /*changeStepSize*/, stepTruncated, 0 /*errorNorm*/, izfTrunc, transitionType, this );
+            this->odeSolverPostObservers(
+                OdeSolverPostObserverArg<VD>()
+                    .setStepSize( h )
+                    .setStepTruncated( stepTruncated )
+                    .setIzfTrunc( izfTrunc )
+                    .setTransitionType( transitionType )
+                    .setSolver( this ) );
 
             // Add LU timing stats from Newton's method
             auto& newtonLu = newton->iterationPerformer()->newtonDescentDirection()->luTimingStats;
