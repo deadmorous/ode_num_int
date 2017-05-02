@@ -7,6 +7,7 @@
 #include "../../timing/TimingStats.h"
 #include "../../alg/interfaces/NewtonSolverIterationObservers.h"
 #include "../../lu/LUFactorizerTimingStats.h"
+#include "../../infra/def_getset.h"
 
 #include <list>
 
@@ -19,6 +20,20 @@ template< class VD >
 using OdeSolverPreObservers = cxx::Observers<
     typename VD::value_type /*stepSize*/,
     const OdeSolver<VD>* >;
+
+template< class VD >
+struct OdeSolverPostObserverArg
+    {
+        CTM_DECL_THIS_CLASS_ALIAS( OdeSolverPostObserverArg<VD> )
+        CTM_DECL_SIMPLE_CLASS_FIELD( typename VD::value_type, stepSize, setStepSize, 0 )
+        CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepAccepted, setStepAccepted, false )
+        CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepSizeChanged, setStepSizeChanged, false )
+        CTM_DECL_SIMPLE_CLASS_FIELD( bool, stepTruncated, setStepTruncated, false )
+        CTM_DECL_SIMPLE_CLASS_FIELD( typename VD::value_type, errorNorm, setErrorNorm, 0 )
+        CTM_DECL_SIMPLE_CLASS_FIELD( unsigned int, izfTrunc, setIzfTrunc, ~0u )
+        CTM_DECL_SIMPLE_CLASS_FIELD( int, transitionType, setTransitionType, 0 )
+        CTM_DECL_SIMPLE_CLASS_FIELD( const OdeSolver<VD>*, solver, setSolver, nullptr )
+    };
 
 template< class VD >
 using OdeSolverPostObservers = cxx::Observers<
