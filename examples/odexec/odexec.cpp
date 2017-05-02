@@ -17,10 +17,11 @@ int main()
 
     try {
         OdeSolverConfiguration<VD> cfg;
-        cfg.setValue("rhs", "oscillator");
+        cfg.setValue("rhs", "bouncing_ball");
         cfg.setValue("output_con", "con_solution");
-        cfg.setValue("time", 1);
+        cfg.setValue("time", 10);
         V x0( 2 );
+        x0[0] = 0.5;
         auto sc = cfg.apply( set<unsigned int>(), 0, x0 );
         solveOde( &cfg, &sc );
         return 0;

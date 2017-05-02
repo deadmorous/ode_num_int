@@ -90,7 +90,7 @@ class LinearOdeEventController :
             // Switch state
             std::fill( m_transitions.begin(), m_transitions.end(), 0 );
             m_transitions[itmin] = m_state[itmin] = s( m_zf2[itmin] );
-            rhs->switchPhaseState( m_transitions.data() );
+            rhs->switchPhaseState( m_transitions.data(), t2, x2 );
             if( izfTrunc )
                 *izfTrunc = itmin;
             if( transitionType )
