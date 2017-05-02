@@ -174,7 +174,8 @@ class OdeSolverRosenbrock_SW2_4 :
                         throw cxx::exception( "Step size has decreased to the minimum or below" );
                     }
 
-                this->odeSolverPostObservers( hcur, scResult.acceptStep, scResult.changeStepSize, stepTruncated, errorNorm, izfTrunc, transitionType, this );
+                this->odeSolverPostObservers( OdeSolverPostObserverArg<VD>(
+                    hcur, scResult.acceptStep, scResult.changeStepSize, stepTruncated, errorNorm, izfTrunc, transitionType, this ) );
 
                 if( scResult.acceptStep )
                     break;

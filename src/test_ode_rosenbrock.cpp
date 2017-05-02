@@ -47,29 +47,21 @@ void testOdeRosenbrockSolver()
     unsigned int nSteps = 0;
     unsigned int nRejectedSteps = 0;
     unsigned int nStepChanges = 0;
-    solver.odeSolverPostObservers.add( [&](
-                                       double h,
-                                       bool stepAccepted,
-                                       bool stepSizeChanged,
-                                       bool stepTruncated,
-                                       double errorNorm,
-                                       unsigned int /* izfTrunc */,
-                                       int /*transitionType*/,
-                                       const OdeSolver<MyVD>* s ) {
+    solver.odeSolverPostObservers.add( [&]( const OdeSolverPostObserverArg<MyVD>& arg ) {
         ++nSteps;
-        if( !stepAccepted )
+        if( !arg.stepAccepted() )
             ++nRejectedSteps;
-        if( stepSizeChanged )
+        if( arg.stepSizeChanged() )
             ++nStepChanges;
         //*
         cout << "step " << nSteps
-             << ", time = " << s->initialTime()
-             << ", h = " << h
-             << ", err = " << errorNorm
-             << ", " << (stepAccepted? "accepted": "rejected");
-        if( stepSizeChanged )
+             << ", time = " << arg.solver()->initialTime()
+             << ", h = " << arg.stepSize()
+             << ", err = " << arg.errorNorm()
+             << ", " << (arg.stepAccepted()? "accepted": "rejected");
+        if( arg.stepSizeChanged() )
             cout << ", step size changed";
-        if( stepTruncated )
+        if( arg.stepTruncated() )
             cout << ", step truncated";
         cout << endl;
         /*/

@@ -26,8 +26,13 @@ Contains declarations for some mathematical constants.
 /** \addtogroup CTMSTD_MATH_CONST*/
 //@{
 
+#ifndef M_PI
 #define M_PI            3.14159265358979323846  ///< The 'Pi' constant
+#endif // M_PI
+
+#ifndef M_PI_2
 #define M_PI_2          (M_PI/2)                ///< A half of the 'Pi' constant
+#endif // M_PI_2
 
 //@}
 

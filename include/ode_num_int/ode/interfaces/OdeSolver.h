@@ -33,18 +33,31 @@ struct OdeSolverPostObserverArg
         CTM_DECL_SIMPLE_CLASS_FIELD( unsigned int, izfTrunc, setIzfTrunc, ~0u )
         CTM_DECL_SIMPLE_CLASS_FIELD( int, transitionType, setTransitionType, 0 )
         CTM_DECL_SIMPLE_CLASS_FIELD( const OdeSolver<VD>*, solver, setSolver, nullptr )
+
+        OdeSolverPostObserverArg() {}
+        OdeSolverPostObserverArg(
+                typename VD::value_type stepSize,
+                bool stepAccepted,
+                bool stepSizeChanged,
+                bool stepTruncated,
+                typename VD::value_type errorNorm,
+                unsigned int izfTrunc,
+                int transitionType,
+                const OdeSolver<VD>* solver
+                ) :
+            m_stepSize( stepSize ),
+            m_stepAccepted( stepAccepted ),
+            m_stepSizeChanged( stepSizeChanged ),
+            m_stepTruncated( stepTruncated ),
+            m_errorNorm( errorNorm ),
+            m_izfTrunc( izfTrunc ),
+            m_transitionType( transitionType ),
+            m_solver( solver )
+            {}
     };
 
 template< class VD >
-using OdeSolverPostObservers = cxx::Observers<
-    typename VD::value_type /*stepSize*/,
-    bool /*stepAccepted*/,
-    bool /*stepSizeChanged*/,
-    bool /*stepTruncated*/,
-    typename VD::value_type /*errorNorm*/,
-    unsigned int /*izfTrunc*/,
-    int /*transitionType*/,
-    const OdeSolver<VD>* >;
+using OdeSolverPostObservers = cxx::Observers< const OdeSolverPostObserverArg<VD>& >;
 
 using JacobianRefreshObservers = cxx::Observers< bool /*start*/ >;
 
