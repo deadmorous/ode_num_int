@@ -45,7 +45,7 @@ class LinearOdeEventController :
                 unsigned int *izfTrunc = nullptr, int *transitionType = nullptr )
             {
             ASSERT( !m_clean );
-            auto rhs = this->odeRhs();
+            auto rhs = this->odeRhs().get();
             if( !m_haveZf )
                 return rhs->truncateStep( t2, x2 );
 
@@ -89,17 +89,28 @@ class LinearOdeEventController :
 
             // Switch state
             std::fill( m_transitions.begin(), m_transitions.end(), 0 );
-            m_transitions[itmin] = m_state[itmin] = s( m_zf2[itmin] );
+            m_transitions[itmin] = s( m_zf2[itmin] );
+            m_state[itmin] = ( m_zfflags[itmin] & OdeRhs<VD>::BothDirections ) == OdeRhs<VD>::BothDirections ?   m_transitions[itmin] :   0;
             rhs->switchPhaseState( m_transitions.data(), t2, x2 );
             if( izfTrunc )
                 *izfTrunc = itmin;
             if( transitionType )
                 *transitionType = s( m_zf2[itmin] );
 
-            // Compute m_zf1 using linear interpolation
+            // Compute m_zf1 using linear interpolation; however, for switched item
+            // recalculate zero function if there is no bidirectional transition or
+            // the zero function is discontinuous
             for( unsigned int i=0; i<nz; ++i ) {
                 auto& zf = m_zf1[i];
-                zf = zf*( 1. - tmin ) + m_zf2[i]*tmin;
+                if( i == itmin   &&
+                    ( m_zfflags[i] & ( OdeRhs<VD>::Discontinuous | OdeRhs<VD>::BothDirections )
+                        != OdeRhs<VD>::BothDirections ) )
+                    {
+                        rhs->zeroFunctions( m_zfbuf, t2, x2 );
+                        zf = m_zfbuf[i];
+                    }
+                else
+                    zf = zf*( 1. - tmin ) + m_zf2[i]*tmin;
                 }
 
             return true;
@@ -110,6 +121,7 @@ class LinearOdeEventController :
         bool m_haveZf;                  // True when there are more than zero zero functions
         V m_zf1;                        // Zero functions at the beginning of the step
         V m_zf2;                        // Zero functions at the end of the step
+        std::vector<unsigned int> m_zfflags;
         V m_zfbuf;                      // Zero functions somewhere in the middle
         std::vector<unsigned int> m_zfi;// Indices of zero function that changed their sign, terminated with ~0u
         std::vector<int> m_transitions;
@@ -131,6 +143,8 @@ class LinearOdeEventController :
             m_transitions.resize( nz );
             m_state.resize( nz );
             std::fill( m_state.begin(), m_state.end(), 0 );
+            m_zfflags = rhs->zeroFuncFlags();
+            ASSERT( m_zfflags.size() == nz );
             return true;
             }
 
@@ -144,9 +158,9 @@ class LinearOdeEventController :
             auto x2 = m_zf2[i];
             auto st = m_state[i];
             if( x2 > 0 )
-                return st == 1 ?   false :   x1 < 0;
+                return st == 1 ?   false :   x1 < 0   &&   ( m_zfflags[i] & OdeRhs<VD>::MinusPlus );
             else
-                return st == -1 ?   false :   x1 > 0;
+                return st == -1 ?   false :   x1 > 0   &&   ( m_zfflags[i] & OdeRhs<VD>::PlusMinus );
             }
 
     };

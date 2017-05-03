@@ -26,7 +26,9 @@ class BouncingBall :
         explicit BouncingBall() :
 //            m_mass( 1 ),
             m_g( 9.8 ),
-            m_recoveryFactor( 0.9 )
+            m_recoveryFactor( 0.9 ),
+            m_stickSpeed( 1e-5 ),
+            m_sticking( false )
             {}
 
         unsigned int secondOrderVarCount() const {
@@ -41,25 +43,36 @@ class BouncingBall :
             return 1;
             }
 
+        virtual std::vector<unsigned int> zeroFuncFlags() const {
+            return std::vector<unsigned int>( 1, OdeRhs<VD>::PlusMinus );
+        }
+
         void rhs( V& dst, real_type time, const V& x ) const
             {
             this->odeRhsPreObservers( time, x, this );
             dst.resize( 2 );
-            dst[0] = x[1];
-            dst[1] = -m_g;
+            if( m_sticking )
+                dst[0] = dst[1] = 0;
+            else {
+                dst[0] = x[1];
+                dst[1] = -m_g;
+                }
             this->odeRhsPostObservers( time, x, dst, this );
             }
 
         void zeroFunctions( V& dst, real_type /*time*/, const V& x ) const
             {
             dst.resize( 1 );
-            dst[0] = x[0]*x[1];
+            dst[0] = x[0];
             }
 
         void switchPhaseState( const int* /*transitions*/, real_type /*time*/, V& x )
             {
-            if( fabs(x[0]) < fabs(x[1]) )
-                // Only consider impact when the ball really goes down
+            if( fabs(x[1]) < m_stickSpeed ) {
+                x[0] = x[1] = 0;
+                m_sticking = true;
+                }
+            else
                 x[1] *= -m_recoveryFactor;
             }
 
@@ -72,7 +85,8 @@ class BouncingBall :
             Parameters result;
 //            result["mass"] = m_mass;
             result["gravity_acceleration"] = m_g;
-            result["recovery_factor"] = 0.9;
+            result["recovery_factor"] = m_recoveryFactor;
+            result["stick_speed"] = m_stickSpeed;
             return result;
             }
 
@@ -81,6 +95,7 @@ class BouncingBall :
 //            this->maybeLoadParameter( parameters, "mass", m_mass );
             this->maybeLoadParameter( parameters, "gravity_acceleration", m_g );
             this->maybeLoadParameter( parameters, "recovery_factor", m_recoveryFactor );
+            this->maybeLoadParameter( parameters, "stick_speed", m_stickSpeed );
             }
 
         Parameters helpOnParameters() const
@@ -89,6 +104,7 @@ class BouncingBall :
 //            result["mass"] = "The mass of the point";
             result["gravity_acceleration"] = "Gravity acceleration";
             result["recovery_factor"] = "Impact recovery factor";
+            result["stick_speed"] = "Normal speed threshold for sticking";
             return result;
             }
 
@@ -102,6 +118,9 @@ class BouncingBall :
 //        real_type m_mass;
         real_type m_g;
         real_type m_recoveryFactor;
+        real_type m_stickSpeed;
+
+        bool m_sticking;
     };
 
 } // end namespace testmodels

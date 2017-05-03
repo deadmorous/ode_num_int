@@ -31,6 +31,13 @@ class OdeRhs :
     public OptionalParameters
     {
     public:
+        enum ZeroFunctionFlag {
+            PlusMinus = 0x01,
+            MinusPlus = 0x02,
+            BothDirections = PlusMinus | MinusPlus,
+            Discontinuous = 0x04
+        };
+
         typedef VectorTemplate< VD > V;
         typedef typename V::value_type real_type;
         OdeRhsPreObservers<VD> odeRhsPreObservers;
@@ -50,6 +57,9 @@ class OdeRhs :
         virtual unsigned int zeroFuncCount() const {
             return 0;
             }
+        virtual std::vector<unsigned int> zeroFuncFlags() const {
+            return std::vector<unsigned int>( zeroFuncCount(), BothDirections );
+        }
 
         virtual void rhs( V& dst, real_type time, const V& x ) const = 0;
         virtual void zeroFunctions( V& /*dst*/, real_type /*time*/, const V& /*x*/ ) const {}
