@@ -66,8 +66,9 @@ class BouncingBall :
             dst[0] = x[0];
             }
 
-        void switchPhaseState( const int* /*transitions*/, real_type /*time*/, V& x )
+        void switchPhaseState( int* transitions, real_type /*time*/, V& x )
             {
+            transitions[0] = 1; // Remain above the plane
             if( fabs(x[1]) < m_stickSpeed ) {
                 x[0] = x[1] = 0;
                 m_sticking = true;

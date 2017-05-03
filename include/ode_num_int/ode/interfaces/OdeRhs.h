@@ -63,7 +63,7 @@ class OdeRhs :
 
         virtual void rhs( V& dst, real_type time, const V& x ) const = 0;
         virtual void zeroFunctions( V& /*dst*/, real_type /*time*/, const V& /*x*/ ) const {}
-        virtual void switchPhaseState( const int* /*transitions*/, real_type /*time*/, V& /*x*/ ) {}
+        virtual void switchPhaseState( int* /*transitions*/, real_type /*time*/, V& /*x*/ ) {}
         virtual std::string describeZeroFunction( unsigned int /*index*/ ) const {
             return std::string();
             }

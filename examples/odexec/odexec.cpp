@@ -18,7 +18,7 @@ int main()
     try {
         OdeSolverConfiguration<VD> cfg;
         cfg.setValue("rhs", "bouncing_ball");
-        cfg.setValue("rhs.stick_speed", 1e-1);
+        cfg.setValue("rhs.stick_speed", 1e-5);
         cfg.setValue("output_con", "con_solution");
         cfg.setValue("time", 10);
 
