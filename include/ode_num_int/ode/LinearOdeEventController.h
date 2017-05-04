@@ -155,13 +155,16 @@ class LinearOdeEventController :
 
         bool xz( unsigned int i ) const
             {
-            auto x1 = m_zf1[i];
             auto x2 = m_zf2[i];
             auto st = m_state[i];
-            if( x2 > 0 )
-                return st == 1 ?   false :   x1 < 0   &&   ( m_zfflags[i] & OdeRhs<VD>::MinusPlus );
-            else
-                return st == -1 ?   false :   x1 > 0   &&   ( m_zfflags[i] & OdeRhs<VD>::PlusMinus );
+            switch( m_zfflags[i] & OdeRhs<VD>::BothDirections ) {
+                case OdeRhs<VD>::MinusPlus:
+                    return ( st == -1   &&   x2 >= 0 )   ||   ( st == 0   &&   x2 > 0 );
+                case OdeRhs<VD>::PlusMinus:
+                    return ( st == 1   &&   x2 <= 0 )   ||   ( st == 0   &&   x2 < 0 );
+                case OdeRhs<VD>::BothDirections:
+                    return s(x2) != st;
+                }
             }
 
     };

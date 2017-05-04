@@ -68,13 +68,26 @@ class BouncingBall :
 
         void switchPhaseState( int* transitions, real_type /*time*/, V& x )
             {
-            transitions[0] = 1; // Remain above the plane
-            if( fabs(x[1]) < m_stickSpeed ) {
+            auto stick = [&, this]() {
                 x[0] = x[1] = 0;
                 m_sticking = true;
+                transitions[0] = 0; // Stay on the plane
+                };
+
+            if( fabs(x[1]) < m_stickSpeed )
+                stick();
+            else if( x[1] < 0 ) {
+                // Falling down, there was no collision just a moment before
+                x[1] *= -m_recoveryFactor;
+                transitions[0] = 1; // Remain above the plane
                 }
             else
-                x[1] *= -m_recoveryFactor;
+                // There was a collision just a moment before, because the speed is positive.
+                // If we let the point go up, there will be a collision again because at the end of
+                // next time step the point will be below the plane again, just as it is now.
+                // As a result, there will be an infinite loop.
+                // Therefore, the best we can do now is to consider the point stick to the plane.
+                stick();
             }
 
         std::string describeZeroFunction( unsigned int /*index*/ ) const {
