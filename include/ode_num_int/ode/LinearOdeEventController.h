@@ -104,7 +104,7 @@ class LinearOdeEventController :
             for( unsigned int i=0; i<nz; ++i ) {
                 auto& zf = m_zf1[i];
                 if( i == itmin   &&
-                    ( m_zfflags[i] & ( OdeRhs<VD>::Discontinuous | OdeRhs<VD>::BothDirections )
+                    ( ( m_zfflags[i] & ( OdeRhs<VD>::Discontinuous | OdeRhs<VD>::BothDirections ) )
                         != OdeRhs<VD>::BothDirections ) )
                     {
                         rhs->zeroFunctions( m_zfbuf, t2, x2 );
@@ -164,6 +164,9 @@ class LinearOdeEventController :
                     return ( st == 1   &&   x2 <= 0 )   ||   ( st == 0   &&   x2 < 0 );
                 case OdeRhs<VD>::BothDirections:
                     return s(x2) != st;
+                default:
+                    ASSERT( false );    // Unreacheable
+                    return false;
                 }
             }
 
