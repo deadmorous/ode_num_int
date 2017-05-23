@@ -36,6 +36,8 @@ class LinearOdeEventController :
                     // Compute event indicators at step start
                     auto rhs = this->odeRhs();
                     rhs->zeroFunctions( m_zf1, t1, x1 );
+                    for (typename V::size_type i=0; i<m_zf1.size(); ++i)
+                        m_state[i] = s(m_zf1[i]);
                     }
                 }
             }
