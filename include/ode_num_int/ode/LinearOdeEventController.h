@@ -167,7 +167,7 @@ class LinearOdeEventController :
                 case OdeRhs<VD>::BothDirections:
                     return s(x2) != st;
                 default:
-                    ASSERT( false );    // Unreacheable
+                    ASSERT( false );    // Reaching here means invalid zero function flags
                     return false;
                 }
             }
