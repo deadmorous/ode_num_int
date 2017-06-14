@@ -76,6 +76,7 @@ class LinearOdeEventController :
                 auto zf1 = m_zf1[i];
                 auto zf2 = m_zf2[i];
                 real_type t = zf1 / ( zf1 - zf2 );
+                ASSERT (t >= 0);
                 if( tmin > t ) {
                     tmin = t;
                     itmin = i;
