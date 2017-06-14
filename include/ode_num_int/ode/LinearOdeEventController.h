@@ -37,7 +37,7 @@ class LinearOdeEventController :
                     auto rhs = this->odeRhs();
                     rhs->zeroFunctions( m_zf1, t1, x1 );
                     for (typename V::size_type i=0; i<m_zf1.size(); ++i)
-                        m_state[i] = s(m_zf1[i]);
+                        m_state[i] = s(m_zf1[i], m_zfflags[i]);
                     }
                 }
             }
@@ -91,29 +91,35 @@ class LinearOdeEventController :
 
             // Switch state
             std::fill( m_transitions.begin(), m_transitions.end(), 0 );
-            m_transitions[itmin] = s( m_zf2[itmin] );
+            auto currentTransitionType = s( m_zf2[itmin] );
+            m_transitions[itmin] = currentTransitionType;
             // m_state[itmin] = ( m_zfflags[itmin] & OdeRhs<VD>::BothDirections ) == OdeRhs<VD>::BothDirections ?   m_transitions[itmin] :   0;
             rhs->switchPhaseState( m_transitions.data(), t2, x2 );
-            m_state[itmin] = m_transitions[itmin];
             if( izfTrunc )
                 *izfTrunc = itmin;
             if( transitionType )
-                *transitionType = s( m_zf2[itmin] );
+                *transitionType = currentTransitionType;
 
-            // Compute m_zf1 using linear interpolation; however, for switched item
-            // recalculate zero function if there is no bidirectional transition or
-            // the zero function is discontinuous
-            for( unsigned int i=0; i<nz; ++i ) {
+            // Update m_zf1 and m_state
+            if (m_haveRecomputedZf)
+                rhs->zeroFunctions( m_zfbuf, t2, x2 );
+            for (unsigned int i=0; i<nz; ++i) {
                 auto& zf = m_zf1[i];
-                if( i == itmin   &&
-                    ( ( m_zfflags[i] & ( OdeRhs<VD>::Discontinuous | OdeRhs<VD>::BothDirections ) )
-                        != OdeRhs<VD>::BothDirections ) )
-                    {
-                        rhs->zeroFunctions( m_zfbuf, t2, x2 );
-                        zf = m_zfbuf[i];
-                    }
+                auto zff = m_zfflags[i];
+                bool recompute = (zff & OdeRhs<VD>::RecomputeAfterSwitch) != 0;
+                if (recompute)
+                    zf = m_zfbuf[i];
                 else
                     zf = zf*( 1. - tmin ) + m_zf2[i]*tmin;
+                auto& st = m_state[i];
+                if (recompute)
+                    st = s(zf, zff);
+                else if (i == itmin) {
+                    if ((zff & OdeRhs<VD>::BothDirections) == OdeRhs<VD>::BothDirections)
+                        st = currentTransitionType;
+                    else
+                        st = s(zf, zff);
+                    }
                 }
 
             return true;
@@ -122,6 +128,7 @@ class LinearOdeEventController :
     private:
         bool m_clean;
         bool m_haveZf;                  // True when there are more than zero zero functions
+        bool m_haveRecomputedZf;        // True when there are at least one zero function with the RecomputeAfterSwitch flag
         V m_zf1;                        // Zero functions at the beginning of the step
         V m_zf2;                        // Zero functions at the end of the step
         std::vector<unsigned int> m_zfflags;
@@ -148,11 +155,31 @@ class LinearOdeEventController :
             std::fill( m_state.begin(), m_state.end(), 0 );
             m_zfflags = rhs->zeroFuncFlags();
             ASSERT( m_zfflags.size() == nz );
+            m_haveRecomputedZf = false;
+            for (auto f : m_zfflags)
+                if (f & OdeRhs<VD>::RecomputeAfterSwitch) {
+                    m_haveRecomputedZf = true;
+                    break;
+                    }
             return true;
             }
 
         static int s( real_type x ) {
             return x < 0? -1: x > 0? 1: 0;
+            }
+
+        static int s( real_type x, unsigned int flags ) {
+            switch( flags & OdeRhs<VD>::BothDirections ) {
+                case OdeRhs<VD>::PlusMinus:
+                    return x <= 0 ?   0 :   1;
+                case OdeRhs<VD>::MinusPlus:
+                    return x >= 0 ?   0 :  -1;
+                case OdeRhs<VD>::BothDirections:
+                    return s(x);
+                default:
+                    ASSERT(false);
+                    return 0;
+                }
             }
 
         bool xz( unsigned int i ) const

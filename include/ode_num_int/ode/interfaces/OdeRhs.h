@@ -35,7 +35,8 @@ class OdeRhs :
             PlusMinus = 0x01,
             MinusPlus = 0x02,
             BothDirections = PlusMinus | MinusPlus,
-            Discontinuous = 0x04
+            RecomputeAfterSwitch = 0x04,
+            InterpolateAfterSwitch = 0x00
         };
 
         typedef VectorTemplate< VD > V;
@@ -63,7 +64,7 @@ class OdeRhs :
 
         virtual void rhs( V& dst, real_type time, const V& x ) const = 0;
         virtual void zeroFunctions( V& /*dst*/, real_type /*time*/, const V& /*x*/ ) const {}
-        virtual void switchPhaseState( int* /*transitions*/, real_type /*time*/, V& /*x*/ ) {}
+        virtual void switchPhaseState( const int* /*transitions*/, real_type /*time*/, V& /*x*/ ) {}
         virtual std::string describeZeroFunction( unsigned int /*index*/ ) const {
             return std::string();
             }

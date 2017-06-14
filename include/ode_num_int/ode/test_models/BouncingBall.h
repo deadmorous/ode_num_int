@@ -66,12 +66,11 @@ class BouncingBall :
             dst[0] = x[0];
             }
 
-        void switchPhaseState( int* transitions, real_type /*time*/, V& x )
+        void switchPhaseState( const int* transitions, real_type /*time*/, V& x )
             {
             auto stick = [&, this]() {
                 x[0] = x[1] = 0;
                 m_sticking = true;
-                transitions[0] = 0; // Stay on the plane
                 };
 
             if( fabs(x[1]) < m_stickSpeed )
@@ -79,7 +78,6 @@ class BouncingBall :
             else if( x[1] < 0 ) {
                 // Falling down, there was no collision just a moment before
                 x[1] *= -m_recoveryFactor;
-                transitions[0] = 1; // Remain above the plane
                 }
             else
                 // There was a collision just a moment before, because the speed is positive.
