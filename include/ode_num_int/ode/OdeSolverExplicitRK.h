@@ -90,6 +90,7 @@ class OdeSolverExplicitRK :
             this->odeSolverPostObservers(
                 OdeSolverPostObserverArg<VD>()
                     .setStepSize( m_h )
+                    .setStepTruncated( stepTruncated )
                     .setIzfTrunc( izfTrunc )
                     .setTransitionType( transitionType )
                     .setSolver( this ) );
