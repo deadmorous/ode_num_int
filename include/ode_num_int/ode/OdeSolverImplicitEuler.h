@@ -27,7 +27,8 @@ class OdeSolverImplicitEuler :
             OdeNewtonSolver<VD>( *this, "newton" ),
             OdeSolverEventController<VD>( *this, "linear" ),
             m_predictorSteps( 1 ),
-            m_mapping4Newton( std::make_shared< OdeStepMappingEuler<VD> >() )
+            m_mapping4Newton( std::make_shared< OdeStepMappingEuler<VD> >() ),
+            m_hardResetRequested( true )
             {
             auto setupNewtonSolver = [this]() {
                 auto newton = this->newtonSolver();
@@ -67,8 +68,11 @@ class OdeSolverImplicitEuler :
             return m_mapping4Newton->initialState();
             }
 
-        void setInitialState( real_type initialTime, const V& initialState, bool /*soft*/ = false ) {
+        void setInitialState( real_type initialTime, const V& initialState, bool soft = false )
+            {
             m_mapping4Newton->setInitialState( initialTime, initialState );
+            if( !soft )
+                m_hardResetRequested = true;
             }
 
         void doStep()
@@ -94,14 +98,18 @@ class OdeSolverImplicitEuler :
                 m_mapping4Newton->computeEqnState( m_eqnbuf, m_predictor->initialState() );
                 if( m_reorder )
                     m_eqnbuf = m_reorder->orderInput( m_eqnbuf );
-                newton->setInitialGuess( m_eqnbuf, false );
+                newton->setInitialGuess( m_eqnbuf, m_hardResetRequested );
+                m_hardResetRequested = false;
                 }
             else if( m_reorder ) {
                 m_reorder->orderInput( m_eqnbuf, m_mapping4Newton->eqnInitialState() );
-                newton->setInitialGuess( m_eqnbuf, false );
+                newton->setInitialGuess( m_eqnbuf, m_hardResetRequested );
+                m_hardResetRequested = false;
                 }
-            else
-                newton->setInitialGuess( m_mapping4Newton->eqnInitialState(), false );
+            else {
+                newton->setInitialGuess( m_mapping4Newton->eqnInitialState(), m_hardResetRequested );
+                m_hardResetRequested = false;
+                }
 
             this->tstat0.add( timer.Lap() );
             m_mapping4Newton->beforeStep();
@@ -211,6 +219,7 @@ class OdeSolverImplicitEuler :
         std::shared_ptr< OdeStepMappingEuler<VD> > m_mapping4Newton;
         V m_buf;
         V m_eqnbuf;
+        bool m_hardResetRequested;
     };
 
 
