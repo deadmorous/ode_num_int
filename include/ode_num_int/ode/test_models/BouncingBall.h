@@ -24,7 +24,6 @@ class BouncingBall :
         enum FrictionType { Atan, Tabular, Linear };
 
         explicit BouncingBall() :
-//            m_mass( 1 ),
             m_g( 9.8 ),
             m_recoveryFactor( 0.9 ),
             m_stickSpeed( 1e-5 ),
@@ -95,7 +94,6 @@ class BouncingBall :
         Parameters parameters() const
             {
             Parameters result;
-//            result["mass"] = m_mass;
             result["gravity_acceleration"] = m_g;
             result["recovery_factor"] = m_recoveryFactor;
             result["stick_speed"] = m_stickSpeed;
@@ -104,7 +102,6 @@ class BouncingBall :
 
         void setParameters( const Parameters & parameters )
             {
-//            this->maybeLoadParameter( parameters, "mass", m_mass );
             this->maybeLoadParameter( parameters, "gravity_acceleration", m_g );
             this->maybeLoadParameter( parameters, "recovery_factor", m_recoveryFactor );
             this->maybeLoadParameter( parameters, "stick_speed", m_stickSpeed );
@@ -113,7 +110,6 @@ class BouncingBall :
         Parameters helpOnParameters() const
             {
             Parameters result;
-//            result["mass"] = "The mass of the point";
             result["gravity_acceleration"] = "Gravity acceleration";
             result["recovery_factor"] = "Impact recovery factor";
             result["stick_speed"] = "Normal speed threshold for sticking";
@@ -127,7 +123,6 @@ class BouncingBall :
             }
 
     private:
-//        real_type m_mass;
         real_type m_g;
         real_type m_recoveryFactor;
         real_type m_stickSpeed;
