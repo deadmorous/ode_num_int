@@ -1,5 +1,8 @@
 // OptionalParameters.h
 
+/// \file
+/// \brief Declaration of the OptionalParameters class and related types / functions.
+
 #ifndef _INFRA_OPTIONALPARAMETERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _INFRA_OPTIONALPARAMETERS_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
@@ -17,6 +20,7 @@
 
 namespace ctm {
 
+/// \brief Namespace used internally by the OptionalParameters class.
 namespace OptionalParametersPrivate {
 
 template< typename T > struct IsValidValueType : std::false_type {};
@@ -31,40 +35,72 @@ template<class Interface> struct IsValidValueType< std::shared_ptr<Interface> > 
 
 } // end namespace OptionalParametersPrivate
 
+/// \brief Interface for a list of optional named parameters.
+/// \note Trees of parameters can be organized because each parameter can be an object
+/// supporting this interface.
 class OptionalParameters
     {
     public:
+        /// \brief Type for path identifying a node in a parameter tree.
         typedef std::vector< std::string > Path;
 
         class Value;
 
+        /// \brief Type for a set of named parameters.
         typedef std::map< std::string, Value > Parameters;
 
+        /// \brief Type holding a single value of any acceptable type, plus nested parameters.
+        /// \note Value is stored as a string; nested parameters are stored as Parameters.
         class Value
             {
             public:
+                /// \brief Default constructor. Value is initialized by an empty string; no nested parameters.
                 Value() {}
 
+                /// \brief Constructor.
+                /// \param text Initializer for the field storing the value.
+                /// \param nestedParameters Initializer for the field storing nested parameters.
                 Value( const std::string& text, const Parameters& nestedParameters ) :
                     m_value( text ),
                     m_nestedParameters( std::make_shared< Parameters >( nestedParameters ) )
                     {}
 
+                /// \brief Constructor accepting a C-string initializer (no nested parameters).
                 Value( const char* x ) : m_value( x ) {}
+
+                /// \brief Constructor accepting an std::string initializer (no nested parameters).
                 Value( const std::string& x ) : m_value( x ) {}
+
+                /// \brief Constructor accepting an integer initializer (no nested parameters).
                 Value( int x ) : m_value( std::to_string( x ) ) {}
+
+                /// \brief Constructor accepting an unsigned integer initializer (no nested parameters).
                 Value( unsigned int x ) : m_value( std::to_string( x ) ) {}
+
+                /// \brief Constructor accepting a double initializer (no nested parameters).
                 Value( double x )
                     {
                     std::ostringstream s;
                     s << std::setprecision(16) << x;
                     m_value = s.str();
                     }
+
+                /// \brief Constructor accepting a boolean initializer (no nested parameters).
                 Value( bool x ) : m_value(x? "true": "false") {}
 
+                /// \brief Constructor accepting an object initializer.
+                /// \note The value is initialized by object type.
+                /// \note Nested parameters
+                /// are initialized by optional parameters of the object passed, if the object supports
+                /// the OptionalParameters interface. Otherwise, there are no nested parameters.
                 template<class Interface>
                 inline Value( const std::shared_ptr<Interface>& x );
 
+                /// \brief Returns value converted to type \a T.
+                /// \note If \a T is a shared pointer to a factory interface, the string value is interpreted as
+                /// a type identifier and passed to Factory<T>::newInstance(). Then nested parameters, if any,
+                /// are set into the newly created instance by calling its OptionalParameters::safeNestedParameters()
+                /// method.
                 template< class T, typename = typename std::enable_if< OptionalParametersPrivate::IsValidValueType<T>::value >::type >
                 T value() const {
                     T result;
@@ -72,19 +108,23 @@ class OptionalParameters
                     return result;
                     }
 
+                /// \brief Implicit cast to type \a T.
                 template< class T, typename = typename std::enable_if< OptionalParametersPrivate::IsValidValueType<T>::value >::type >
                 operator T() const {
                     return value<T>();
                     }
 
+                /// \brief Returns pointer to nested parameters; if there are no nested parameters, returns null pointer.
                 Parameters *nestedParameters() {
                     return m_nestedParameters.get();
                     }
 
+                /// \brief Returns pointer to nested parameters (const overload); if there are no nested parameters, returns null pointer.
                 const Parameters *nestedParameters() const {
                     return m_nestedParameters.get();
                     }
 
+                /// \brief Returns a copy of nested parameters (empty if there are no nested parameters).
                 Parameters safeNestedParameters() const {
                     return m_nestedParameters ?   *m_nestedParameters :   Parameters();
                     }
@@ -132,6 +172,11 @@ class OptionalParameters
                 inline void toType( std::shared_ptr<Interface>& dst ) const;
             };
 
+        /// \brief Returns parameters nested to the specified node of the specified set of parameters.
+        /// \param root The set of parameters being queried.
+        /// \param path Path identifying the node in \a root, whose nested parameters are requested.
+        /// \return Reference to the set of parameters nested to node of \a root identified by \a path.
+        /// \note If the path does not exist or is a leaf, an exception is thrown.
         static Parameters& parameters( Parameters& root, const Path& path = Path() )
             {
             Parameters *result = &root;
@@ -147,10 +192,21 @@ class OptionalParameters
             return *result;
             }
 
+        /// \brief Returns parameters nested to the specified node of the specified set of parameters.
+        /// \param root The set of parameters being queried.
+        /// \param path Path identifying the node in \a root, whose nested parameters are requested.
+        /// Path elements must be separated by dot.
+        /// \return Reference to the set of parameters nested to node of \a root identified by \a path.
+        /// \note If the path does not exist or is a leaf, an exception is thrown.
         static Parameters& parameters( Parameters& root, const std::string& formattedPath ) {
             return parameters( root, parsePath( formattedPath ) );
             }
 
+        /// \brief Returns value at specified path of the specified set of parameters.
+        /// \param root The set of parameters being queried.
+        /// \param path Path identifying the node in \a root, whose value is requested.
+        /// \return Reference to the value of the node identified by \a path in \a root.
+        /// \note If the path does not exist, an exception is thrown.
         static Value& value( Parameters& root, const Path& path )
             {
             Path parentPath;
@@ -163,34 +219,54 @@ class OptionalParameters
             return it->second;
             }
 
+        /// \brief Returns value at specified path of the specified set of parameters.
+        /// \param root The set of parameters being queried.
+        /// \param path Path identifying the node in \a root, whose value is requested.
+        /// Path elements must be separated by dot.
+        /// \return Reference to the value of the node identified by \a path in \a root.
+        /// \note If the path does not exist, an exception is thrown.
         static Value& value( Parameters& root, const std::string& formattedPath ) {
             return value( root, parsePath( formattedPath ) );
             }
 
-
-
+        /// \brief Virtual destructor.
         virtual ~OptionalParameters() {}
 
+        /// \brief Returns parameters of this instance.
         virtual Parameters parameters() const {
             return Parameters();
             }
 
+        /// \brief Sets parameters of this instance.
         virtual void setParameters( const Parameters& /* parameters */ ) {
             }
 
+        /// \brief Returns help strings on parameters of this instance.
         virtual Parameters helpOnParameters() const {
             return Parameters();
             }
 
+        /// \brief Returns help string on this type.
         virtual std::string helpOnType() const {
             return std::string();
             }
 
+        /// \brief Returns parameters of default-constructed instance of the specified type.
+        /// \param Interface Factory interface (used to create a fresh new instance for getting its parameters).
+        /// \param typeId Type identifier of object whose default parameters are requested.
+        /// \return Parameters of default-constructed instance type \a typeId created by Factory<Interface>.
         template<class Interface>
         static Parameters defaultParameters( const std::string& typeId ) {
             return typeId.empty() ?   Parameters() :   Factory<Interface>::newInstance( typeId )->parameters();
             }
 
+        /// \brief Sets parameter if it exists, using a setter function.
+        /// \param parameters Set of parameters where the parameter to be set is beeing looked up.
+        /// \param name Parameter name
+        /// \param setter Function called to set parameter into this object.
+        /// \return True if parameter is found, false otherwise.
+        /// \note If the parameter with name \a name is not found in \a parameters,
+        /// nothing is done and \a false is returned.
         template< class Setter >
         static bool maybeSetParameter( const Parameters& parameters, const std::string& name, Setter setter )
             {
@@ -203,6 +279,13 @@ class OptionalParameters
                 }
             }
 
+        /// \brief Sets parameter if it exists, using the reference to the storage.
+        /// \param parameters Set of parameters where the parameter to be set is beeing looked up.
+        /// \param name Parameter name
+        /// \param dst Reference to the value where the parameter is to be stored.
+        /// \return True if parameter is found, false otherwise.
+        /// \note If the parameter with name \a name is not found in \a parameters,
+        /// nothing is done and \a false is returned.
         template< class T >
         static bool maybeLoadParameter( const Parameters& parameters, const std::string& name, T& dst )
             {
@@ -211,6 +294,13 @@ class OptionalParameters
                 } );
             }
 
+        /// \brief Appends help text for nested parameters of an object.
+        /// \param Interface Factory interface.
+        /// \param nested Object whose help is to be requested.
+        /// \param helpText Help text corresponding to a parameter whose value is currently \a nested.
+        /// \return Value whose value is \a helpText, followed by the list of available implementations of \a Interface,
+        /// and whose nested values are what helpOnParameters() returns for \a nested, if it supports
+        /// the OptionalParameters interface.
         template< class Interface >
         static Value appendNestedHelp( const std::shared_ptr<Interface>& nested, const std::string& helpText )
             {
@@ -312,6 +402,11 @@ inline void OptionalParameters::Value::toType( std::shared_ptr<Interface>& dst )
         }
     }
 
+/// \brief Performs formatted output of a value to a stream.
+/// \param s stream where the output is written to.
+/// \param v value to output.
+/// \return \a s.
+/// \note Nested parameters of the value are not written to the stream.
 inline std::ostream& operator<<( std::ostream& s, const OptionalParameters::Value& v ) {
     s << v.value<std::string>();
     return s;
