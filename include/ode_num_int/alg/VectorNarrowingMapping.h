@@ -33,7 +33,7 @@ class VectorNarrowingMapping :
             m_state = state;
             }
 
-        void disabledOutputIndices() const {
+        std::vector< unsigned int > disabledOutputIndices() const {
             return m_disabledOutputIndices;
             }
 
