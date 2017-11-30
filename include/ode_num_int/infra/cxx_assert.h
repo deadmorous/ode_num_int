@@ -44,7 +44,7 @@ The macro is commonly used to verify that a specific function returns non-zero.
 #ifndef _INFRA_CXX_ASSERT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 #define _INFRA_CXX_ASSERT_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
 
-#ifdef _WIN32
+#if defined _WIN32 && !defined __MINGW32__
 /////////////////////////////////////////////////////////////////////////////
 // Defs for Win32 builds
 
@@ -87,7 +87,7 @@ The macro is commonly used to verify that a specific function returns non-zero.
 
 #endif // CTM_USE_DBGDUMP
 
-#elif defined __linux
+#elif defined __linux || defined __MINGW32__
 /////////////////////////////////////////////////////////////////////////////
 // Defs for Linux builds
 
