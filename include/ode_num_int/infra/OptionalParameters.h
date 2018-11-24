@@ -49,6 +49,9 @@ class OptionalParameters
         /// \brief Type for a set of named parameters.
         typedef std::map< std::string, Value > Parameters;
 
+        /// \brief Type for function returning the list of registered types.
+        typedef std::function<std::vector<std::string>()> TypeRegistryGetter;
+
         /// \brief Type holding a single value of any acceptable type, plus nested parameters.
         /// \note Value is stored as a string; nested parameters are stored as Parameters.
         class Value
@@ -129,9 +132,17 @@ class OptionalParameters
                     return m_nestedParameters ?   *m_nestedParameters :   Parameters();
                     }
 
+                /// \brief Returns function returning the list of registered factory types,
+                /// if this instance is constructed with a shared pointer argument.
+                /// \note If this instance is constructed using a non-object type, the returned function is empty.
+                TypeRegistryGetter typeRegistryGetter() const {
+                    return m_typeRegistryGetter;
+                }
+
             private:
                 std::string m_value;
                 std::shared_ptr<Parameters> m_nestedParameters;
+                TypeRegistryGetter m_typeRegistryGetter;
 
                 void toType( std::string& dst ) const {
                     dst = m_value;
@@ -378,7 +389,9 @@ class OptionalParameters
     };
 
 template<class Interface>
-inline OptionalParameters::Value::Value( const std::shared_ptr<Interface>& x ) {
+inline OptionalParameters::Value::Value( const std::shared_ptr<Interface>& x ) :
+    m_typeRegistryGetter(&Factory<Interface>::registeredTypes)
+    {
     if( x ) {
         if( auto typeIdGetter = dynamic_cast< TypeIdGetter<Interface>* >(x.get()) )
             m_value = typeIdGetter->typeId();
