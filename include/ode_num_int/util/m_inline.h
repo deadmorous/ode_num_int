@@ -13,8 +13,8 @@ Defines several frequently used mathematic functions.
 /// \file m_inline.h
 /// \brief \ref CTMSTD_MATH_INLINE
 
-#ifndef _UTIL_M_INLINE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _UTIL_M_INLINE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _M_INLINE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#define _M_INLINE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
 
 #include "../infra/cxx_assert.h"
 #include <math.h>
@@ -125,4 +125,4 @@ namespace cubic {
 } // end namespace math
 } // end namespace ctm
 
-#endif // _UTIL_M_INLINE_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _M_INLINE_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_

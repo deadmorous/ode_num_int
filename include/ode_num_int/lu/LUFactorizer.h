@@ -130,13 +130,16 @@ class LUFactorizer
             for( auto it=matrixBegin; it!=matrixEnd; ++it, ++fc )
                 **fc = it->second;
 #else // CTM_MATH_LU_USE_MX_FAST_CACHE
+            auto elementsSet = 0;
             for( auto it=matrixBegin; it!=matrixEnd; ++it ) {
+                ++elementsSet;
                 auto r = it->first.first;
                 auto c = it->first.second;
-                if( c < r )
-                    L(r, c) = it->second;
-                else
-                    U(r, c) = it->second;
+                if (!setLU(r, c, it->second)) {
+                    // Fall back to setMatrix because the sparsity layout has changed
+                    setMatrix(matrixBegin, matrixEnd);
+                    return;
+                    }
                 }
 #endif // CTM_MATH_LU_USE_MX_FAST_CACHE
             m_factorized = false;
@@ -340,6 +343,16 @@ class LUFactorizer
             return m_l[m_al[r] + (c-m_p[r])];
             }
 
+        bool setL( unsigned int r, unsigned int c, double x )
+            {
+            if (r > c && c >= m_p[r]) {
+                m_l[m_al[r] + (c-m_p[r])] = x;
+                return true;
+                }
+            else
+                return false;
+            }
+
         // Don't dereference the pointer returned, element at column 0 will most likely be outside the sparsity pattern!
         real_type *L_column_0_address( unsigned int r )
             {
@@ -357,6 +370,16 @@ class LUFactorizer
             return m_u[m_au[c] + (r-m_q[c])];
             }
 
+        bool setU( unsigned int r, unsigned int c, double x )
+            {
+            if (r <= c && r >= m_q[c]) {
+                m_u[m_au[c] + (r-m_q[c])] = x;
+                return true;
+                }
+            else
+                return false;
+            }
+
         // Don't dereference the pointer returned, element at row 0 will most likely be outside the sparsity pattern!
         real_type *U_row_0_address( unsigned int c ) {
             return m_u.data() + m_au[c] - m_q[c];
@@ -367,6 +390,10 @@ class LUFactorizer
             ASSERT( r <= c );
             ASSERT( r >= m_q[c] );
             return m_u[m_au[c] + (r-m_q[c])];
+            }
+
+        bool setLU( unsigned int r, unsigned int c, double x ) {
+            return c < r? setL(r, c, x): setU(r, c, x);
             }
 
         unsigned int maxpq( unsigned int r, unsigned int c ) {

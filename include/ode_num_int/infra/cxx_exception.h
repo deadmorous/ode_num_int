@@ -32,8 +32,8 @@ exceptions from ctm::cxx::exception by using the #CTM_DECL_EXCEPTION macro.
 /// - the ctm::cxx::exception exception that supports construction by a string and returns that string in what();
 /// - The #CTM_DECL_EXCEPTION macro for declaring derived exceptions.
 
-#ifndef _INFRA_CXX_EXCEPTION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
-#define _INFRA_CXX_EXCEPTION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#ifndef _CXX_EXCEPTION_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
+#define _CXX_EXCEPTION_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
 
 #include <string>
 
@@ -103,4 +103,4 @@ class nameEx : public nameBaseEx\
 } // end namespace cxx
 } // end namespace ctm
 
-#endif // _INFRA_CXX_EXCEPTION_H_AB0B81B0_CF3E_424f_9766_BA04D388199F_
+#endif // _CXX_EXCEPTION_H_8A20E4E5_42D0_4d8a_B50D_4326E9683BB8_
