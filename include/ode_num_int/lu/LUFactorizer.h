@@ -5,6 +5,10 @@
 
 #include "./LUFactorizerTimingStats.h"
 #include "../infra/cxx_zeroinit.h"
+#include "../infra/cxx_exception.h"
+#include "../infra/cxx_assert.h"
+#include <vector>
+#include <algorithm>
 
 // #define CTM_MATH_LU_USE_MX_FAST_CACHE
 
