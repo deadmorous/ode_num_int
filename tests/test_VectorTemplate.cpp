@@ -5,6 +5,7 @@
 
 using namespace ctm::math;
 
+
 TEST(VectorTemplate, IsInitiallyZero) {
     Vector<double> v(10);
     for (auto x : v)
@@ -23,5 +24,4 @@ TEST(VectorTemplate, CopiesCtorInput) {
     ASSERT_EQ(v.size(), input_vector.size());
     ASSERT_TRUE(std::equal(v.begin(), v.end(), input_vector.begin()));
 }
-
 // TODO: More tests covering VectorTemplate interface

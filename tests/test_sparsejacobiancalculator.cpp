@@ -1,14 +1,9 @@
-// test_sparse_jacobian.cpp
-
+#include <gtest/gtest.h>
+#include <iostream>
 #include "ode_num_int/SparseJacobianCalculator.h"
 #include "ode_num_int/computeJacobian.h"
-#include <iostream>
 
-namespace {
-
-using namespace std;
-using namespace ctm;
-using namespace math;
+using namespace ctm::math;
 
 typedef VectorData<double> VD;
 typedef VectorTemplate<VD> V;
@@ -23,12 +18,12 @@ struct M : public VectorMapping< VD >
             ASSERT( n > 1 );
             SparseMatrix m( n, n );
             m.addScaledIdentity( 10 );
-            m.block( 1, 0, n-1, n-1 ).addScaledIdentity( 1 );
-            m.block( 0, 1, n-1, n-1 ).addScaledIdentity( 2 );
-            m.block( 0, n-1, 1, 1 ).addScaledIdentity( 10 );
-            m.block( 0, n-2, 2, 2 ).addScaledIdentity( 1 );
-            m.block( n-1, 0, 1, 1 ).addScaledIdentity( 10 );
-            m.block( n-2, 0, 2, 2 ).addScaledIdentity( 2 );
+            m.block( 1, 0, n-1, n-1 ).addScaledIdentity( rand() );
+            m.block( 0, 1, n-1, n-1 ).addScaledIdentity( rand() );
+            m.block( 0, n-1, 1, 1 ).addScaledIdentity( rand() );
+            m.block( 0, n-2, 2, 2 ).addScaledIdentity( rand() );
+            m.block( n-1, 0, 1, 1 ).addScaledIdentity( rand() );
+            m.block( n-2, 0, 2, 2 ).addScaledIdentity( rand() );
             m_matrix = m;
             }
 
@@ -48,8 +43,8 @@ struct M : public VectorMapping< VD >
         FastSparseMatrix m_matrix;
     };
 
-void testSparseJacobian()
-    {
+TEST(SparseJacobianCalculator, CalculationTest)
+{
     unsigned int n = 20;
     M mapping( n );
     V x0( n );
@@ -61,19 +56,10 @@ void testSparseJacobian()
 
     using T1 = decltype (Jslow);
     using T2 = decltype (J);
-    ASSERT( !std::equal(Jslow.begin(), Jslow.end(), J.begin(), [](T1::iterator::value_type a, T2::iterator::value_type b) {
-                return a.first == b.first && a.second == b.second;
+
+    ASSERT_TRUE(std::equal(Jslow.begin(), Jslow.end(), J.begin(), [](T1::iterator::value_type a, T2::iterator::value_type b) {
+               return a.first == b.first && a.second == b.second;
     } ) );
 
-    // TODO: Remove
-    for (auto item : J) {
-        cout << item.first.first << " === " << item.first.second << " --- " << item.second << endl;
-    }
+}
 
-    cout << J;
-    }
-
-// Uncomment to call the test at startup
-// struct _{_() { testSparseJacobian(); } }__;
-
-} // anonymous namespace

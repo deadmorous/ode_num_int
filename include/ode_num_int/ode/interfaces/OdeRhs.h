@@ -26,26 +26,26 @@ using OdeRhsPostObservers = cxx::Observers<
     const OdeRhs<VD>* /*odeRhs*/ >;
 
 template< class VD >
-class OdeRhs :
+class OdeRhs : // OdeRhs интерфейс правосторонней ОДУ
     public Factory< OdeRhs<VD> >,
     public OptionalParameters
     {
     public:
-        enum ZeroFunctionFlag {
-            PlusMinus = 0x01,
+        enum ZeroFunctionFlag { // нулевая функция, которая почти везде равна 0; enum - перечисения
+            PlusMinus = 0x01, // в шестнадцатиричной системе счисления
             MinusPlus = 0x02,
             BothDirections = PlusMinus | MinusPlus,
             RecomputeAfterSwitch = 0x04,
             InterpolateAfterSwitch = 0x00
         };
 
-        typedef VectorTemplate< VD > V;
-        typedef typename V::value_type real_type;
+        typedef VectorTemplate< VD > V; // typedef - присваивание V типа данных VectorTemplate< VD >
+        typedef typename V::value_type real_type; // typename указывает на то что value_type - тип данных, тогда real_type - новое имя для этого типа данных
         OdeRhsPreObservers<VD> odeRhsPreObservers;
         OdeRhsPostObservers<VD> odeRhsPostObservers;
 
-        V rhs( real_type time, const V& x ) const {
-            V result( varCount() );
+        V rhs( real_type time, const V& x ) const { // & - адресс, берется для того чтобы функция, использующая переменную в качестве параметра, могла что-то в нее записать
+            V result( varCount() ); // функц result типа данных V зависящая от числа производных
             rhs( result, time, x );
             return result;
             }
@@ -53,8 +53,8 @@ class OdeRhs :
             return rhs( time, x );
             }
 
-        virtual unsigned int secondOrderVarCount() const = 0;
-        virtual unsigned int firstOrderVarCount() const = 0;
+        virtual unsigned int secondOrderVarCount() const = 0; // virtual - виртуальная функция базового класса, которая переопределяеся производным классом
+        virtual unsigned int firstOrderVarCount() const = 0; // unsigned - указывает что переменная может принимать только неотрицательные значения
         virtual unsigned int zeroFuncCount() const {
             return 0;
             }
