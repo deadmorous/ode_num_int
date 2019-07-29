@@ -262,21 +262,21 @@ struct ImplementationTypeTraits< Implementation > { \
 /// \param Implementation A template class derived from ctm::FactoryMixin.
 /// \param typeName Type identifier to be associated with \a Implementation.
 /// \sa ctm::Factory, ctm::ImplementationTypeTraits, #CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS.
-
-#ifdef _MSC_VER
-// Note: General implementation (below this one) causes C2910 in MSVS 2013
+#if defined (__GNUC__) && (__GNUC__ < 8)
+#define CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( Implementation, typeName ) \
+template<> \
+template< class ... args > \
+struct ImplementationTypeTraits< Implementation<args...> > { \
+        static FactoryBase::TypeId typeId() { return typeName; } \
+    };
+#else // defined (__GNUC__) && (__GNUC__ < 8)
 #define CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( Implementation, typeName ) \
 template< class ... args > \
 struct ImplementationTypeTraits< Implementation<args...> > { \
         static FactoryBase::TypeId typeId() { return typeName; } \
     };
-#else // _MSC_VER
-#define CTM_DECL_IMPLEMENTATION_TEMPLATE_TRAITS( Implementation, typeName ) \
-template<> template< class ... args > \
-struct ImplementationTypeTraits< Implementation<args...> > { \
-        static FactoryBase::TypeId typeId() { return typeName; } \
-    };
-#endif // _MSC_VER
+#endif // defined (__GNUC__) && (__GNUC__ < 8)
+
 
 /// \brief Declares a variable of type ctm::ImplementationRegistrator.
 /// \param Implementation A class derived from ctm::FactoryMixin.
