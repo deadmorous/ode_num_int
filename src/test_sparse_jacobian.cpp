@@ -58,6 +58,18 @@ void testSparseJacobian()
     J = Jslow;
     J.makeZero();
     computeSparseJacobian( J, mapping, x0, 1e-6 );
+
+    using T1 = decltype (Jslow);
+    using T2 = decltype (J);
+    ASSERT( !std::equal(Jslow.begin(), Jslow.end(), J.begin(), [](T1::iterator::value_type a, T2::iterator::value_type b) {
+                return a.first == b.first && a.second == b.second;
+    } ) );
+
+    // TODO: Remove
+    for (auto item : J) {
+        cout << item.first.first << " === " << item.first.second << " --- " << item.second << endl;
+    }
+
     cout << J;
     }
 
